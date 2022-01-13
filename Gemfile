@@ -27,6 +27,8 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'devise'
 gem 'factory_bot_rails'
+gem 'faker'
+
 
 # Environment variables 
 gem 'dotenv-rails', :require => 'dotenv/rails-now'
