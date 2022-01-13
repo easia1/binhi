@@ -1,0 +1,77 @@
+<%= form_with(model: plant, local: true) do |form| %>
+  <% if plant.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(plant.errors.count, "error") %> prohibited this plant from being saved:</h2>
+
+      <ul>
+        <% plant.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :sci_name %>
+    <%= form.text_field :sci_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :synonyms %>
+    <%= form.text_area :synonyms %>
+  </div>
+
+  <div class="field">
+    <%= form.label :common_name %>
+    <%= form.text_area :common_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :family %>
+    <%= form.text_field :family %>
+  </div>
+
+  <div class="field">
+    <%= form.label :genus %>
+    <%= form.text_field :genus %>
+  </div>
+
+  <div class="field">
+    <%= form.label :light_reqts %>
+    <%= form.text_area :light_reqts %>
+  </div>
+
+  <div class="field">
+    <%= form.label :water_reqts %>
+    <%= form.text_field :water_reqts %>
+  </div>
+
+  <div class="field">
+    <%= form.label :foliage_color %>
+    <%= form.text_area :foliage_color %>
+  </div>
+
+  <div class="field">
+    <%= form.label :flower_color %>
+    <%= form.text_area :flower_color %>
+  </div>
+
+  <div class="field">
+    <%= form.label :landscape_uses %>
+    <%= form.text_area :landscape_uses %>
+  </div>
+
+  <div class="field">
+    <%= form.label :native_distribution %>
+    <%= form.text_area :native_distribution %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
