@@ -10,10 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_11_122922) do
+ActiveRecord::Schema.define(version: 2022_01_13_121205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "images", force: :cascade do |t|
+    t.text "caption"
+    t.text "source"
+    t.string "file_path"
+    t.bigint "plant_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["plant_id"], name: "index_images_on_plant_id"
+  end
+
+  create_table "plants", force: :cascade do |t|
+    t.string "sci_name"
+    t.text "synonyms", default: [], array: true
+    t.text "common_names", default: [], array: true
+    t.string "family"
+    t.string "genus"
+    t.text "light_reqts", default: [], array: true
+    t.string "water_reqts"
+    t.text "foliage_color", default: [], array: true
+    t.text "flower_color", default: [], array: true
+    t.text "landscape_uses"
+    t.text "native_distribution", default: [], array: true
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_plants_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -31,4 +59,6 @@ ActiveRecord::Schema.define(version: 2022_01_11_122922) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "images", "plants"
+  add_foreign_key "plants", "users"
 end

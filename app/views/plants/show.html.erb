@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Sci name:</strong>
+  <%= @plant.sci_name %>
+</p>
+
+<p>
+  <strong>Synonyms:</strong>
+  <%= @plant.synonyms %>
+</p>
+
+<p>
+  <strong>Common name:</strong>
+  <%= @plant.common_name %>
+</p>
+
+<p>
+  <strong>Family:</strong>
+  <%= @plant.family %>
+</p>
+
+<p>
+  <strong>Genus:</strong>
+  <%= @plant.genus %>
+</p>
+
+<p>
+  <strong>Light reqts:</strong>
+  <%= @plant.light_reqts %>
+</p>
+
+<p>
+  <strong>Water reqts:</strong>
+  <%= @plant.water_reqts %>
+</p>
+
+<p>
+  <strong>Foliage color:</strong>
+  <%= @plant.foliage_color %>
+</p>
+
+<p>
+  <strong>Flower color:</strong>
+  <%= @plant.flower_color %>
+</p>
+
+<p>
+  <strong>Landscape uses:</strong>
+  <%= @plant.landscape_uses %>
+</p>
+
+<p>
+  <strong>Native distribution:</strong>
+  <%= @plant.native_distribution %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @plant.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_plant_path(@plant) %> |
+<%= link_to 'Back', plants_path %>
