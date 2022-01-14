@@ -1,33 +1,38 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Sci name:</strong>
-  <%= @plant.sci_name %>
+  <strong>Specific epithet:</strong>
+  <%= @plant.specific_epithet %>
 </p>
 
 <p>
-  <strong>Synonyms:</strong>
-  <%= @plant.synonyms %>
+  <strong>Grex:</strong>
+  <%= @plant.grex %>
 </p>
 
 <p>
-  <strong>Common names:</strong>
-  <%= @plant.common_names %>
+  <strong>Infraspecies unit:</strong>
+  <%= @plant.infraspecies_unit %>
 </p>
 
 <p>
-  <strong>Family:</strong>
-  <%= @plant.family %>
+  <strong>Infraspecies name:</strong>
+  <%= @plant.infraspecies_name %>
 </p>
 
 <p>
-  <strong>Genus:</strong>
-  <%= @plant.genus %>
+  <strong>Cultivar group:</strong>
+  <%= @plant.cultivar_group %>
 </p>
 
 <p>
-  <strong>Light reqts:</strong>
-  <%= @plant.light_reqts %>
+  <strong>Cultivar:</strong>
+  <%= @plant.cultivar %>
+</p>
+
+<p>
+  <strong>Hybrid:</strong>
+  <%= @plant.hybrid %>
 </p>
 
 <p>
@@ -36,28 +41,13 @@
 </p>
 
 <p>
-  <strong>Foliage color:</strong>
-  <%= @plant.foliage_color %>
-</p>
-
-<p>
-  <strong>Flower color:</strong>
-  <%= @plant.flower_color %>
-</p>
-
-<p>
   <strong>Landscape uses:</strong>
   <%= @plant.landscape_uses %>
 </p>
 
 <p>
-  <strong>Native distribution:</strong>
-  <%= @plant.native_distribution %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @plant.user_id %>
+  <strong>Genus:</strong>
+  <%= @plant.genus_id %>
 </p>
 
 <%= link_to 'Edit', edit_plant_path(@plant) %> |
