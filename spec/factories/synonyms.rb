@@ -1,5 +1,6 @@
 FactoryBot.define do
-  factory :plant do
+  factory :synonym do
+    genus { "MyString" }
     specific_epithet { "MyString" }
     grex { "MyString" }
     infraspecies_unit { "MyString" }
@@ -7,8 +8,6 @@ FactoryBot.define do
     cultivar_group { "MyString" }
     cultivar { "MyString" }
     hybrid { "MyString" }
-    water_reqts { "MyString" }
-    landscape_uses { "MyText" }
-    genus { nil }
+    plant { nil }
   end
 end

@@ -35,7 +35,7 @@ gem 'dotenv-rails', :require => 'dotenv/rails-now'
 # File upload 
 gem 'carrierwave', '1.3.1' 
 gem 'cloudinary', '~>1.13.2' 
-gem 'rmagick'
+# gem 'rmagick'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

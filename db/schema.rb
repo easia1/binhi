@@ -10,37 +10,121 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_13_121205) do
+ActiveRecord::Schema.define(version: 2022_01_14_142426) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "common_names", force: :cascade do |t|
+    t.string "name"
+    t.bigint "plant_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["plant_id"], name: "index_common_names_on_plant_id"
+  end
+
+  create_table "families", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "flower_colors", force: :cascade do |t|
+    t.string "color"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "flower_colors_plants", id: false, force: :cascade do |t|
+    t.bigint "flower_color_id", null: false
+    t.bigint "plant_id", null: false
+  end
+
+  create_table "foliage_colors", force: :cascade do |t|
+    t.string "color"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "foliage_colors_plants", id: false, force: :cascade do |t|
+    t.bigint "foliage_color_id", null: false
+    t.bigint "plant_id", null: false
+  end
+
+  create_table "genera", force: :cascade do |t|
+    t.string "name"
+    t.string "symbol"
+    t.bigint "family_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["family_id"], name: "index_genera_on_family_id"
+  end
 
   create_table "images", force: :cascade do |t|
     t.text "caption"
     t.text "source"
     t.string "file_path"
-    t.bigint "plant_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "plant_id", null: false
     t.index ["plant_id"], name: "index_images_on_plant_id"
   end
 
-  create_table "plants", force: :cascade do |t|
-    t.string "sci_name"
-    t.text "synonyms", default: [], array: true
-    t.text "common_names", default: [], array: true
-    t.string "family"
-    t.string "genus"
-    t.text "light_reqts", default: [], array: true
-    t.string "water_reqts"
-    t.text "foliage_color", default: [], array: true
-    t.text "flower_color", default: [], array: true
-    t.text "landscape_uses"
-    t.text "native_distribution", default: [], array: true
-    t.bigint "user_id", null: false
+  create_table "light_reqts", force: :cascade do |t|
+    t.string "light_reqt"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "light_reqts_plants", id: false, force: :cascade do |t|
+    t.bigint "light_reqt_id", null: false
+    t.bigint "plant_id", null: false
+  end
+
+  create_table "native_distributions", force: :cascade do |t|
+    t.string "country"
+    t.string "region"
+    t.string "province"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "native_distributions_plants", id: false, force: :cascade do |t|
+    t.bigint "native_distribution_id", null: false
+    t.bigint "plant_id", null: false
+  end
+
+  create_table "plants", force: :cascade do |t|
+    t.string "specific_epithet"
+    t.string "grex"
+    t.string "infraspecies_unit"
+    t.string "infraspecies_name"
+    t.string "cultivar_group"
+    t.string "cultivar"
+    t.string "hybrid"
+    t.string "water_reqts"
+    t.text "landscape_uses"
+    t.bigint "genus_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["genus_id"], name: "index_plants_on_genus_id"
     t.index ["user_id"], name: "index_plants_on_user_id"
+  end
+
+  create_table "synonyms", force: :cascade do |t|
+    t.string "genus"
+    t.string "specific_epithet"
+    t.string "grex"
+    t.string "infraspecies_unit"
+    t.string "infraspecies_name"
+    t.string "cultivar_group"
+    t.string "cultivar"
+    t.string "hybrid"
+    t.bigint "plant_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["plant_id"], name: "index_synonyms_on_plant_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -59,6 +143,10 @@ ActiveRecord::Schema.define(version: 2022_01_13_121205) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "common_names", "plants"
+  add_foreign_key "genera", "families"
   add_foreign_key "images", "plants"
+  add_foreign_key "plants", "genera"
   add_foreign_key "plants", "users"
+  add_foreign_key "synonyms", "plants"
 end
