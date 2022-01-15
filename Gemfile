@@ -29,6 +29,9 @@ gem 'devise'
 gem 'factory_bot_rails'
 gem 'faker'
 
+# For importing/exporting xls/csv/etc.
+gem "roo", "~> 2.8.0"
+
 
 # Environment variables 
 gem 'dotenv-rails', :require => 'dotenv/rails-now'
