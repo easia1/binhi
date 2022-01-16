@@ -12,6 +12,16 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :genus_name %>
+    <%= form.text_field :genus_name, list: 'genera_autocomplete' %>
+    <datalist id="genera_autocomplete" maxlength="4">
+      <% Genus.all.each do |genus| %>
+        <option value="<%= genus.name %>">
+      <% end %>
+    </datalist>
+  </div>
+
+  <div class="field">
     <%= form.label :specific_epithet %>
     <%= form.text_field :specific_epithet %>
   </div>

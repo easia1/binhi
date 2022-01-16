@@ -1,6 +1,10 @@
 class PlantsController < ApplicationController
   before_action :set_plant, only: %i[ show edit update destroy ]
 
+  def home
+  end
+
+
   # GET /plants or /plants.json
   def index
     @plants = Plant.all
@@ -65,6 +69,6 @@ class PlantsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def plant_params
-      params.require(:plant).permit(:specific_epithet, :grex, :infraspecies_unit, :infraspecies_name, :cultivar_group, :cultivar, :hybrid, :water_reqts, :landscape_uses, :genus_id)
+      params.require(:plant).permit(:genus_name, :specific_epithet, :grex, :infraspecies_unit, :infraspecies_name, :cultivar_group, :cultivar, :hybrid, :water_reqts, :landscape_uses, :genus_id)
     end
 end

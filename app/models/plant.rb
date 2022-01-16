@@ -9,4 +9,13 @@ class Plant < ApplicationRecord
   has_and_belongs_to_many :native_distributions
   has_and_belongs_to_many :foliage_colors
   has_and_belongs_to_many :flower_colors
+
+  def genus_name=(name)
+    self.genus = Genus.find_or_create_by(name: name)
+  end
+
+  def genus_name
+    self.genus ? self.genus.name : nil
+  end
+
 end
