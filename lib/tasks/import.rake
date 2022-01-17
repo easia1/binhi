@@ -17,3 +17,5 @@ namespace :import do
   end
 
 end
+
+# To run, type: bundle exec rails import:data
