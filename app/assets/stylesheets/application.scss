@@ -26,7 +26,16 @@ $yellow: rgba(244, 238, 169, 1);
 body {
 }
 
-home-page {
-    background: url('/app/assets/images/bg.jpeg'), left top,
-        linear-gradient(rgba(6, 70, 53, 0), rgba(6, 70, 53, 1));
+.home-page {
+    color: white;
+    height: 100vh;
+    width: 100vw;
+    background-image: linear-gradient(
+            25deg,
+            #064635 60%,
+            rgba(6, 70, 53, 0.1) 90.87%
+        ),
+        url('bg.jpeg');
+    background-size: cover;
+    backdrop-filter: blur(4px);
 }

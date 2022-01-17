@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_14_142426) do
+ActiveRecord::Schema.define(version: 2022_01_17_104908) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,19 +81,6 @@ ActiveRecord::Schema.define(version: 2022_01_14_142426) do
     t.bigint "plant_id", null: false
   end
 
-  create_table "native_distributions", force: :cascade do |t|
-    t.string "country"
-    t.string "region"
-    t.string "province"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "native_distributions_plants", id: false, force: :cascade do |t|
-    t.bigint "native_distribution_id", null: false
-    t.bigint "plant_id", null: false
-  end
-
   create_table "plants", force: :cascade do |t|
     t.string "specific_epithet"
     t.string "grex"
@@ -108,6 +95,7 @@ ActiveRecord::Schema.define(version: 2022_01_14_142426) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
+    t.string "distribution"
     t.index ["genus_id"], name: "index_plants_on_genus_id"
     t.index ["user_id"], name: "index_plants_on_user_id"
   end
