@@ -42,4 +42,29 @@
 
 <br>
 
+<h1>families</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Family</th>
+      <th>Genera</th>
+    </tr>
+  </thead>
+    
+
+  <tbody>
+    <% @families.each do |family| %>
+      <tr>
+      <td><%= family.name %></td>
+      <td>
+        <% Genus.where(id: family.genus_ids).each do |genus| %>
+          <%= genus.name %>
+        <% end %>
+      </td>
+      </tr>
+      
+    <% end %>
+  </tbody>
+</table>
+
 <%= link_to 'New Plant', new_plant_path %>

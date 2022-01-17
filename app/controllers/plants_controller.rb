@@ -8,6 +8,7 @@ class PlantsController < ApplicationController
   # GET /plants or /plants.json
   def index
     @plants = Plant.all
+    @families = Family.all.order("name ASC")
   end
 
   # GET /plants/1 or /plants/1.json
