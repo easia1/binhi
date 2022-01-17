@@ -40,6 +40,9 @@ gem 'carrierwave', '1.3.1'
 gem 'cloudinary', '~>1.13.2' 
 # gem 'rmagick'
 
+gem 'bootstrap', '~> 5.1.3'
+gem 'jquery-rails'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
