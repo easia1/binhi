@@ -1,5 +1,6 @@
 class PlantsController < ApplicationController
   before_action :set_plant, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, only: %i[ new create edit update destroy ]
 
   def home
   end
@@ -27,7 +28,8 @@ class PlantsController < ApplicationController
   # POST /plants or /plants.json
   def create
     @plant = Plant.new(plant_params)
-
+    @plant.user_id = current_user.id
+    @plant.genus_id = Genus.find_or_create_by(name: params[:plant][:genus_name]).id
     respond_to do |format|
       if @plant.save
         format.html { redirect_to plant_url(@plant), notice: "Plant was successfully created." }
@@ -70,6 +72,6 @@ class PlantsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def plant_params
-      params.require(:plant).permit(:genus_name, :specific_epithet, :grex, :infraspecies_unit, :infraspecies_name, :cultivar_group, :cultivar, :hybrid, :water_reqts, :landscape_uses, :genus_id)
+      params.require(:plant).permit(:genus_name, :specific_epithet, :grex, :infraspecies_unit, :infraspecies_name, :cultivar_group, :cultivar, :hybrid, :water_reqts, :landscape_uses)
     end
 end
