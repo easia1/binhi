@@ -1,4 +1,56 @@
-<div class="home-page">
-    <h1>An online database of native plants in the Philippines</h1>
-    <h3>Isang online na talaan ng mga katutubong halaman sa Pilipinas</h3>
+<div class="home-page container-fluid">
+    <div class="row">
+        <nav class="home-nav col-3">
+            <%= link_to root_path, class:'nav-logo' do %> <%= image_tag 'Logo-name.svg' %><% end %>
+            <ul class="list-unstyled ps-0 mt-5">
+                    <%= link_to root_path, class: "navigation-link rounded" do %>Home<% end %>
+                    <%= link_to plants_path, class: "navigation-link rounded mt-2" do %>All Plants<% end %>
+                    <li class="mb-1 mt-2">
+                        <button
+                            class="btn-toggle align-items-center rounded collapsed"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#home-collapse"
+                            aria-expanded="false">
+                            Browse by
+                        </button>
+                        <div class="collapse" id="home-collapse">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                <li>
+                                    <a href="#" class="link-light rounded">Family</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="link-light rounded">Genus</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="link-light rounded">Light Requirements</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="link-light rounded">Water Requirements</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="link-light rounded">Foliage Color</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="link-light rounded">Flower Color</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+        </nav>
+        <div class="home-content col-9 p-5">
+            <h1 class="home-hero-text mt-5">An <span class="home-emphasis">online database</span> of native plants in the Philippines</h1>
+            <p class="home-hero-lead ">Isang online na talaan ng mga katutubong halaman sa Pilipinas</p>
+
+            <%= form_tag  root_path, remote: true, method: :get do %>
+                <div class="home-search-container">
+                        <%= text_field_tag :plant, params[:name], placeholder: "Search | Maghanap (hindi pa gumagana)", autofocus: true, class: "form-control search-box rounded" %>
+                        <%= button_tag type: :submit, class: "btn btn-success" do %>
+                            <i class="bx bx-search"></i>
+                        <% end %>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
 </div>

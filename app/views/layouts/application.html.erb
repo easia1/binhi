@@ -20,7 +20,9 @@
   </head>
 
   <body>
+  <% unless action_name == "home" %>
     <%= render 'shared/sidebar' %>
+  <% end %>
     <%= yield %>
 
 
