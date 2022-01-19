@@ -50,5 +50,13 @@
   <%= @plant.genus_id %>
 </p>
 
+<h5>Common Names</h5>
+<% @plant.common_names.each do |common_name| %>
+<p>
+
+  <%= common_name.name %>
+<% end %>
+</p>
+
 <%= link_to 'Edit', edit_plant_path(@plant) %> |
 <%= link_to 'Back', plants_path %>

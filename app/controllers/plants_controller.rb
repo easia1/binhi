@@ -19,6 +19,7 @@ class PlantsController < ApplicationController
   # GET /plants/new
   def new
     @plant = Plant.new
+    @plant.common_names.build
   end
 
   # GET /plants/1/edit
@@ -81,7 +82,7 @@ class PlantsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def plant_params
-      params.require(:plant).permit(:genus_name, :specific_epithet, :grex, :infraspecies_unit, :infraspecies_name, :cultivar_group, :cultivar, :hybrid, :water_reqts, :landscape_uses, genus_attributes: [:symbol, :family_name])
+      params.require(:plant).permit(:genus_name, :specific_epithet, :grex, :infraspecies_unit, :infraspecies_name, :cultivar_group, :cultivar, :hybrid, :water_reqts, :landscape_uses, genus_attributes: [:symbol, :family_name], common_names_attributes: CommonName.attribute_names.map(&:to_sym).push(:_destroy))
     end
 
 
