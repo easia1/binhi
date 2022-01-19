@@ -1,0 +1,49 @@
+<nav class="navigation-bar col-12 col-lg-2 <%= nav_class %>">
+    <%= link_to root_path, class:'nav-logo' do %> <%= image_tag 'Logo-name.svg' %><% end %>
+    <ul class="list-unstyled ps-0 mt-5 nav-options">
+        <div>
+            <%= link_to root_path, class: "navigation-link rounded #{active_class(root_path)}" do %>Home<% end %>
+            <%= link_to plants_path, class: "navigation-link rounded mt-2 #{active_class(plants_path)}" do %>All Plants<% end %>
+            <li class="mb-1 mt-2">
+                <button
+                    class="btn-toggle align-items-center rounded collapsed"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#home-collapse"
+                    aria-expanded="false">
+                    Browse by
+                </button>
+                <div class="collapse" id="home-collapse">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li>
+                            <%= link_to families_path, class:"link-light rounded #{active_class(families_path)}" do%>Family<% end %>
+                        </li>
+                        <li>
+                            <%= link_to plants_path, class:"link-light rounded #{active_class(plants_path)}" do%>Genus<% end %>
+                        </li>
+                        <li>
+                            <%= link_to plants_path, class:"link-light rounded #{active_class(plants_path)}" do%>Light Requirements<% end %>
+                        </li>
+                        <li>
+                            <%= link_to plants_path, class:"link-light rounded #{active_class(plants_path)}" do%>Water Requirements<% end %>
+                        </li>
+                        <li>
+                            <%= link_to plants_path, class:"link-light rounded #{active_class(plants_path)}" do%>Foliage Color<% end %>
+                        </li>
+                        <li>
+                            <%= link_to plants_path, class:"link-light rounded #{active_class(plants_path)}" do%>Flower Color<% end %>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </div>
+        <div>
+            <% if current_user %>
+                <%= link_to destroy_user_session_path, method: :delete, class: "navigation-link rounded mt-2" do %>Log out<% end %>
+            <% else %>
+                <%= link_to new_user_session_path, class: "navigation-link rounded mt-2 #{active_class(new_user_session_path)}" do %>Sign in<% end %>
+                <%= link_to new_user_registration_path, class: "navigation-link rounded  mt-2#{active_class(new_user_registration_path)}" do %>Sign up<% end %>
+            <% end %>
+        </div>
+    </ul>
+
+</nav>

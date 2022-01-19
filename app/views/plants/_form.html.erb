@@ -22,8 +22,27 @@
   </div>
 
   <div class="field">
+    <%= form.label :symbol, 'Genus symbol' %> <br>
+    <%= form.radio_button :symbol, '' %> None <br>
+    <%= form.radio_button :symbol, 'hybrid' %> Hybrid <br>
+    <%= form.radio_button :symbol, 'graft' %> Graft <br>
+  </div>
+
+  <div class="field">
+    <%= form.label :family_name %>
+    <%= form.text_field :family_name %>
+  </div>
+
+  <div class="field">
     <%= form.label :specific_epithet %>
     <%= form.text_field :specific_epithet %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hybrid, 'Specific epithet symbol' %> <br>
+    <%= form.radio_button :hybrid, '' %> None <br>
+    <%= form.radio_button :hybrid, 'manmade' %> Man-made <br>
+    <%= form.radio_button :hybrid, 'natural' %> Natural <br>
   </div>
 
   <div class="field">
@@ -55,6 +74,8 @@
     <%= form.label :hybrid %>
     <%= form.text_field :hybrid %>
   </div>
+
+  
 
   <div class="field">
     <%= form.label :water_reqts %>

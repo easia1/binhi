@@ -1,70 +1,77 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Plants</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Specific epithet</th>
-      <th>Grex</th>
-      <th>Infraspecies unit</th>
-      <th>Infraspecies name</th>
-      <th>Cultivar group</th>
-      <th>Cultivar</th>
-      <th>Hybrid</th>
-      <th>Water reqts</th>
-      <th>Landscape uses</th>
-      <th>Genus</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @plants.each do |plant| %>
+<h1>All Plants</h1>
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
       <tr>
-        <td><%= plant.specific_epithet %></td>
-        <td><%= plant.grex %></td>
-        <td><%= plant.infraspecies_unit %></td>
-        <td><%= plant.infraspecies_name %></td>
-        <td><%= plant.cultivar_group %></td>
-        <td><%= plant.cultivar %></td>
-        <td><%= plant.hybrid %></td>
-        <td><%= plant.water_reqts %></td>
-        <td><%= plant.landscape_uses %></td>
-        <td><%= plant.genus_id %></td>
-        <td><%= link_to 'Show', plant %></td>
-        <td><%= link_to 'Edit', edit_plant_path(plant) %></td>
-        <td><%= link_to 'Destroy', plant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Family</th>
+        <th>Genus</th>
+        <th>Specific epithet</th>
+        <th>Hybrid</th>
+        <th>Grex</th>
+        <th>Infraspecies unit</th>
+        <th>Infraspecies name</th>
+        <th>Cultivar group</th>
+        <th>Cultivar</th>
+        <th>Hybrid</th>
+        <th>Water reqts</th>
+        <th>Landscape uses</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @plants.each do |plant| %>
+        <tr>
+          <td><%= plant.family.name %></td>
+          <td><i><%= get_genus(plant.genus_id).name %></i></td>
+          <td><i><%= plant.specific_epithet %></i></td>
+          <td><%= plant.hybrid %></td>
+          <td><%= plant.grex %></td>
+          <td><%= plant.infraspecies_unit %></td>
+          <td><%= plant.infraspecies_name %></td>
+          <td><%= plant.cultivar_group %></td>
+          <td><%= plant.cultivar %></td>
+          <td><%= plant.hybrid %></td>
+          <td><%= plant.water_reqts %></td>
+          <td><%= plant.landscape_uses %></td>
+          <td><%= link_to 'Show', plant %></td>
+          <td><%= link_to 'Edit', edit_plant_path(plant) %></td>
+          <td><%= link_to 'Destroy', plant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <br>
-
-<h1>families</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Family</th>
-      <th>Genera</th>
-    </tr>
-  </thead>
-    
-
-  <tbody>
-    <% @families.each do |family| %>
+<% if false %>
+  <h1>families</h1>
+  <table>
+    <thead>
       <tr>
-      <td><%= family.name %></td>
-      <td>
-        <% Genus.where(id: family.genus_ids).each do |genus| %>
-          <%= genus.name %>
-        <% end %>
-      </td>
+        <th>Family</th>
+        <th>Genera</th>
       </tr>
+    </thead>
       
-    <% end %>
-  </tbody>
-</table>
+
+    <tbody>
+      <% @families.each do |family| %>
+        <tr>
+        <td><%= family.name %></td>
+        <td>
+          <% Genus.where(id: family.genus_ids).each do |genus| %>
+            <%= genus.name %>
+          <% end %>
+        </td>
+        </tr>
+        
+      <% end %>
+    </tbody>
+  </table>
+
+<% end %>
 
 <%= link_to 'New Plant', new_plant_path %>
