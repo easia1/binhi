@@ -1,5 +1,6 @@
 class PlantsController < ApplicationController
   before_action :set_plant, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, only: %i[ new create edit update destroy ]
 
   def home
   end
@@ -27,6 +28,16 @@ class PlantsController < ApplicationController
   # POST /plants or /plants.json
   def create
     @plant = Plant.new(plant_params)
+    @plant.user_id = current_user.id
+    #@plant.genus_id = Genus.find_or_create_by(name: params[:plant][:genus_name]).id
+    genus = Genus.find_or_initialize_by(name: params[:plant][:genus_name])
+
+    if genus.new_record?
+      family = Family.create(name: params[:plant][:family_name])
+      @plant.genus_id = Genus.create(name: params[:plant][:genus_name], symbol: params[:plant][:symbol], family_id: family.id).id
+    else
+      @plant.genus_id = genus.id
+    end
 
     respond_to do |format|
       if @plant.save
@@ -70,6 +81,8 @@ class PlantsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def plant_params
-      params.require(:plant).permit(:genus_name, :specific_epithet, :grex, :infraspecies_unit, :infraspecies_name, :cultivar_group, :cultivar, :hybrid, :water_reqts, :landscape_uses, :genus_id)
+      params.require(:plant).permit(:genus_name, :specific_epithet, :grex, :infraspecies_unit, :infraspecies_name, :cultivar_group, :cultivar, :hybrid, :water_reqts, :landscape_uses, genus_attributes: [:symbol, :family_name])
     end
+
+
 end

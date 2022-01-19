@@ -38,7 +38,7 @@ gem 'dotenv-rails', :require => 'dotenv/rails-now'
 # File upload 
 gem 'carrierwave', '1.3.1' 
 gem 'cloudinary', '~>1.13.2' 
-# gem 'rmagick'
+gem 'rmagick'
 
 gem 'bootstrap', '~> 5.1.3'
 gem 'jquery-rails'
