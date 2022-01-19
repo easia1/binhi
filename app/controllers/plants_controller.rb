@@ -38,7 +38,7 @@ class PlantsController < ApplicationController
     else
       @plant.genus_id = genus.id
     end
-
+    
     respond_to do |format|
       if @plant.save
         format.html { redirect_to plant_url(@plant), notice: "Plant was successfully created." }
