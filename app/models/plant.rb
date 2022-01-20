@@ -1,4 +1,6 @@
 class Plant < ApplicationRecord
+  include ActiveModel::Validations
+
   belongs_to :genus
   belongs_to :user
   delegate :family, :to => :genus
@@ -10,6 +12,10 @@ class Plant < ApplicationRecord
   has_and_belongs_to_many :flower_colors
 
   accepts_nested_attributes_for :common_names, allow_destroy: true, reject_if: proc { |att| att['name'].blank? }
+
+  validates :common_names, :nested_attributes_uniqueness => {:field => :name}
+
+
 
   def genus_name=(name)
     self.genus = Genus.find_or_create_by(name: name)
