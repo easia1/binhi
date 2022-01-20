@@ -87,8 +87,20 @@
     <%= form.text_area :landscape_uses %>
   </div>
 
-  <strong>Common Names</strong>
+
+  <strong>Synonyms</strong>
   
+  <div class='fields2'>
+    <%= form.fields_for :synonyms do |builder| %>
+      <%= render 'synonym', f: builder %>
+    <% end %>
+  </div> 
+  <%= link_to_add_synonym('Add Synonym', form, :synonyms, class: 'btn btn-primary') %>
+
+  <div>
+    <strong>Common Names</strong>
+  </div>
+
   <div class='fields'>
     <%= form.fields_for :common_names do |builder| %>
       <%= render 'common_name', f: builder %>

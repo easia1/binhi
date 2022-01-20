@@ -53,10 +53,24 @@
 <h5>Common Names</h5>
 <% @plant.common_names.each do |common_name| %>
 <p>
-
   <%= common_name.name %>
 <% end %>
 </p>
+
+<h5>Synonyms</h5>
+<% @plant.synonyms.each do |synonym| %>
+<p>
+  <%= synonym.genus %>
+  <%= synonym.specific_epithet %>
+  <%= synonym.grex %>
+  <%= synonym.infraspecies_unit %>
+  <%= synonym.infraspecies_name %>
+  <%= synonym.cultivar_group %>
+  <%= synonym.cultivar %>
+  <%= synonym.hybrid %>
+<% end %>
+</p>
+
 
 <%= link_to 'Edit', edit_plant_path(@plant) %> |
 <%= link_to 'Back', plants_path %>
