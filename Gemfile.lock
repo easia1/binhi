@@ -234,6 +234,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    select2-rails (4.0.13)
     selenium-webdriver (4.1.0)
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
@@ -306,6 +307,7 @@ DEPENDENCIES
   roo (~> 2.8.0)
   rspec-rails (~> 5.0.0)
   sass-rails (>= 6)
+  select2-rails
   selenium-webdriver
   spring
   spring-watcher-listen (~> 2.0.0)
