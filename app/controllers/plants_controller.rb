@@ -5,6 +5,15 @@ class PlantsController < ApplicationController
   def home
   end
 
+  def get_family
+    puts params
+    @genus = Genus.where(name: params[:name]) if params[:name].present?
+    if @genus.present?
+      render json: { data: @genus.first.family }
+    else
+      render json: { data: nil }
+    end
+  end
 
   # GET /plants or /plants.json
   def index

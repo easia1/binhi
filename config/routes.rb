@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :plants
   resources :families
   resources :genera
+  get "get_family", to: "plants#get_family", as: :get_family
   devise_for :users, :path => '', :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" }
 
   root 'plants#home'
