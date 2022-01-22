@@ -8,7 +8,7 @@ module ApplicationHelper
         render(association.to_s.singularize, f: builder)
       end
 
-      link_to(name, '#', class: "add_fields " + args[:class], data: {id: id, fields: fields.gsub("\n", "")})
+      link_to(name, '#', class: "add_common_name_field " + args[:class], data: {id: id, fields: fields.gsub("\n", "")})
     end
 
     def link_to_add_synonym(name, f, association, **args)
@@ -19,7 +19,7 @@ module ApplicationHelper
         render(association.to_s.singularize, f: builder)
       end
 
-      link_to(name, '#', class: "add_fields2 " + args[:class], data: {id: id, fields: fields.gsub("\n", "")})
+      link_to(name, '#', class: "add_synonym_field " + args[:class], data: {id: id, fields: fields.gsub("\n", "")})
     end
 
     def active_class(path)

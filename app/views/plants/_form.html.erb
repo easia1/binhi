@@ -85,7 +85,7 @@
 
   <strong>Synonyms</strong>
   
-  <div class='fields2'>
+  <div class='fields synonym-container'>
     <%= form.fields_for :synonyms do |builder| %>
       <%= render 'synonym', f: builder %>
     <% end %>
@@ -96,7 +96,7 @@
     <strong>Common Names</strong>
   </div>
 
-  <div class='fields'>
+  <div class='fields common-name-container'>
     <%= form.fields_for :common_names do |builder| %>
       <%= render 'common_name', f: builder %>
     <% end %>
