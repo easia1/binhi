@@ -10,7 +10,11 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require select2
+ *= require select2-bootstrap
  */
+
+@import 'easy-autocomplete/dist/easy-autocomplete';
 
 //@import '~bootstrap/scss/bootstrap';
 //@import 'bootstrap';
@@ -30,6 +34,10 @@ body {
     overflow: scroll;
     color: var(--dark-color);
     font-family: 'Nunito', sans-serif;
+}
+
+input:read-only {
+    color: grey;
 }
 
 .body-container {
@@ -151,7 +159,7 @@ body {
         url('bg.jpeg');
     background-attachment: fixed;
     background-size: cover;
-    backdrop-filter: blur(4px) saturate(1.2);
+    /* backdrop-filter: blur(4px) saturate(1.2); */
     background-repeat: no-repeat;
 }
 
@@ -254,4 +262,67 @@ body {
     height: 3.5rem;
     width: 100%;
     padding: 1rem;
+}
+
+/* Plant preview */
+
+.skeleton-box {
+    display: inline-block;
+    height: 1em;
+    position: relative;
+    overflow: hidden;
+    background-color: #dddbdd;
+
+    &::after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        transform: translateX(-100%);
+        background-image: linear-gradient(
+            90deg,
+            rgba(#fff, 0) 0,
+            rgba(#fff, 0.2) 20%,
+            rgba(#fff, 0.5) 60%,
+            rgba(#fff, 0)
+        );
+        animation: shimmer 2s infinite;
+        content: '';
+    }
+
+    @keyframes shimmer {
+        100% {
+            transform: translateX(100%);
+        }
+    }
+}
+
+.plant-preview {
+    &_family {
+        font-size: 0.9em;
+        font-weight: 300;
+        color: grey;
+    }
+}
+
+// OBJECTS
+
+.preview {
+    display: flex;
+
+    &__body {
+        flex-grow: 1;
+        /* margin-left: 1em; */
+    }
+}
+
+#family-name {
+    text-transform: uppercase;
+}
+
+#genus-name,
+#specific-epithet,
+#infrasp-name {
+    font-style: italic;
 }
