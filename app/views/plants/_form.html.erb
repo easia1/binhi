@@ -107,10 +107,31 @@
     <% end %>
   </div> 
   <%= link_to_add_row('Add Common Name', form, :common_names, class: 'btn btn-primary') %>
+  
+  <div>
+    <strong>Light Requirements</strong>
+  </div>
 
+  <%= form.select :light_reqt, [['Part Sun', 'Part Sun'],['Full Sun', 'Full Sun'], ['Part Shade', 'Part Shade'], ['Full Shade', 'Full Shade']], {}, :required => "true", :multiple => 'multiple', :class => 'form-control' %>
+  
+  <div>
+    <strong>Foliage Colors</strong>
+  </div>  
+
+  <%= form.select :foliage_color, [], {}, :required => "true", :multiple => 'multiple', :class => 'form-control' %>
+  
+  <div>
+    <strong>Flower Color</strong>
+  </div>  
+
+  <%= form.select :flower_color, [], {}, :required => "true", :multiple => 'multiple', :class => 'form-control' %>
+  
+
+  <%#= form.select :light_reqt, [['Part Sun', 'Part Sun'],['Full Sun', 'Full Sun'], ['Part Shade', 'Part Shade'], ['Full Shade', 'Full Shade']], {}, :required => "true", :multiple => 'multiple', :class => 'form-control' %>
+  <%#= form.select :light_reqt, [['Single', 'Single'],['Married', 'Married'], ['Widowed', 'Widowed'], ['Separated', 'Single']], {}, :required => "true", :multiple => 'multiple', :class => 'form-control' %>
+  
   <div class="actions">
     <%= form.submit %>
-
   </div>
 <% end %>
 

@@ -71,6 +71,26 @@
 <% end %>
 </p>
 
+<h5>Light Requirements</h5>
+<% @plant.light_reqts.each do |lr| %>
+<p>
+  <%= lr.light_reqt %>
+<% end %>
+</p>
+
+<h5>Foliage Colors</h5>
+<% @plant.foliage_colors.each do |fc| %>
+<p>
+  <%= fc.color %>
+<% end %>
+
+<h5>Flower Colors</h5>
+<% @plant.flower_colors.each do |fc| %>
+<p>
+  <%= fc.color %>
+<% end %>
+</p>
+
 
 <%= link_to 'Edit', edit_plant_path(@plant) %> |
 <%= link_to 'Back', plants_path %>
