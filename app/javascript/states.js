@@ -11,4 +11,3 @@ window.addEventListener('DOMContentLoaded', () => {
     $searchfield.prop('disabled', true);
   })
 })
-

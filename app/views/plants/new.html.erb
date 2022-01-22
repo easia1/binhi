@@ -1,5 +1,139 @@
 <h1>New Plant</h1>
+<div class="row">
+    <div class="col">
+            <%= render 'form', plant: @plant %>
+            <%= link_to 'Back', plants_path %>
+    </div>
+    <div class="col-12 col-sm-4">
+        <div id="name-preview" class="card">
+            <%= image_tag 'placeholder-img.png', class:"card-img-top" %> 
+            <div class="card-body">
+                <h5 class="card-title">Preview</h5>
+                <div class="preview__body">
+                        <p class="plant-preview_family">
+                            <span class="skeleton-box" id="family-name-skelbox" style="width:55%;"></span>
+                        </p>
+                        <p class="plant-preview_family">
+                            <span id="family-name"></span>
+                        </p>
+                        <h4>
+                            
+                            <span class="skeleton-box" style="width:80%;"></span>
+                            <span class="skeleton-box" style="width:90%;"></span>
+                        </h4>
+                        <h4>
+                            <span id="genus-symbol"></span><span id="genus-name"></span>
+                            <span id="hybrid-symbol"></span>
+                            <span id="specific-epithet"></span>
+                            <span id="grex"></span>
+                            <span id="infrasp-unit"></span>
+                            <span id="infrasp-name"></span>
+                            <span id="cultivar-group"></span>
+                            <span id="cultivar"></span>
+                        </h4>
+                    </div>
+                
+                
+            </div>
+        </div>
+    </div>
+    
 
-<%= render 'form', plant: @plant %>
+    
+</div>
 
-<%= link_to 'Back', plants_path %>
+<script>
+    $(document).on('turbolinks:load', function () {
+        namePreview();
+        // imageHandler();
+    });
+    
+    $("#plant_genus_name").on('input change paste select', function() {
+        var genus = $(this).val();
+        $.ajax({
+            url:"/get_family",
+            method:"get",
+            dataType: "json",
+            data:{name : genus},
+            success :function(data){
+            if (data["data"] != null) {
+                console.log(data)
+                $('#plant_family_name').val(data["data"]["name"]);
+                $('#plant_family_name').prop('readonly', true);
+                showTextBoxValue('#family-name', '#plant_family_name');
+            }
+            else
+            {
+                $('#plant_family_name').val(null);
+                $('#plant_family_name').prop('readonly', false);
+                showTextBoxValue('#family-name', '#plant_family_name');
+            }
+            }
+        });
+    });
+
+    function namePreview() {
+        $('.new-plant-namebox').on('input change paste select', function () {
+            showTextBoxValue('#family-name', '#plant_family_name');
+            showTextBoxValue('#genus-name', '#plant_genus_name');
+            showTextBoxValue('#specific-epithet', '#plant_specific_epithet');
+            showTextBoxValue('#grex', '#plant_grex');
+            showTextBoxValue('#infrasp-unit', '#plant_infraspecies_unit');
+            showTextBoxValue('#infrasp-name', '#plant_infraspecies_name');
+            showTextBoxValue('#cultivar-group', '#plant_cultivar_group');
+            showTextBoxValue('#cultivar', '#plant_cultivar', true);
+        });
+
+
+        $("input[type=radio][name='plant[symbol]']").on('change', function () {
+            
+            if ($("input[type=radio][name='plant[symbol]']:checked").val() == 'hybrid') {
+                $('#genus-symbol').text('×');
+            } else if ($("input[type=radio][name='plant[symbol]']:checked").val() == 'graft') {
+                $('#genus-symbol').text('+');
+            } else {
+                $('#genus-symbol').text('');
+            };
+        });
+
+        $("input[type=radio][name='plant[hybrid]']").on('change', function () {
+            console.log($("input[type=radio][name='plant[hybrid]']:checked").val())
+            if ($("input[type=radio][name='plant[hybrid]']:checked").val() == 'hybrid') {
+                $('#hybrid-symbol').text('×');
+            } else {
+                $('#hybrid-symbol').text('');
+            };
+        });
+    
+    }
+    // function imageHandler() {
+    //     $('#post_image_url').on('keyup', function (event) {
+    //         if (event.keyCode == 86) {
+    //             // user pasted an image url, generate image preview
+    //         }
+    //         if (event.keyCode == 8) {
+    //             if ($('#post_image_url').val() == '') {
+    //                 // user cleared an image url, generate image preview
+    //             }
+    //         }
+    //     });
+    // }
+
+    function showTextBoxValue(destination, source, quotes) {
+        if (quotes) {
+            if ($(source).val() === '') {
+                $(destination).text('');
+
+            } else {
+                $(destination).text("\'"+$(source).val()+"\'");
+            };
+        }
+        else {
+            $(destination).text($(source).val());
+            $(destination).parent().prev().css( "display", "none" );
+        };
+    }
+
+    // Sources: https://medium.com/@codenode/adding-live-media-previews-to-rails-forms-6c470bc93f3a && https://stackoverflow.com/questions/1481152/how-to-detect-a-textboxs-content-has-changed
+
+</script>
