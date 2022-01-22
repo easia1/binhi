@@ -17,4 +17,8 @@ class Plant < ApplicationRecord
     self.genus ? self.genus.name : nil
   end
 
+  def water_reqts=(s)
+    write_attribute(:water_reqts, s.to_s.titleize) # The to_s is in case you get nil/non-string
+  end
+
 end
