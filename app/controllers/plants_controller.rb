@@ -58,7 +58,22 @@ class PlantsController < ApplicationController
     else
       @plant.genus_id = genus.id
     end
-    
+
+    params[:plant][:light_reqt].reject(&:empty?).each do |lr|
+      light_reqt = LightReqt.create!(light_reqt: lr)
+      @plant.light_reqts << light_reqt
+    end
+
+    params[:plant][:foliage_color].reject(&:empty?).each do |fc|
+      foliage_color = FoliageColor.create!(color: fc)
+      @plant.foliage_colors << foliage_color
+    end
+
+    params[:plant][:flower_color].reject(&:empty?).each do |fc|
+      flower_color = FlowerColor.create!(color: fc)
+      @plant.flower_colors << flower_color
+    end
+
     respond_to do |format|
       if @plant.save
         format.html { redirect_to plant_url(@plant), notice: "Plant was successfully created." }
@@ -68,6 +83,7 @@ class PlantsController < ApplicationController
         format.json { render json: @plant.errors, status: :unprocessable_entity }
       end
     end
+    
   end
 
   # PATCH/PUT /plants/1 or /plants/1.json
