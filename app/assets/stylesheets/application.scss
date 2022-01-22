@@ -10,7 +10,11 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require select2
+ *= require select2-bootstrap
  */
+
+@import 'easy-autocomplete/dist/easy-autocomplete';
 
 //@import '~bootstrap/scss/bootstrap';
 //@import 'bootstrap';
@@ -155,7 +159,7 @@ input:read-only {
         url('bg.jpeg');
     background-attachment: fixed;
     background-size: cover;
-    backdrop-filter: blur(4px) saturate(1.2);
+    /* backdrop-filter: blur(4px) saturate(1.2); */
     background-repeat: no-repeat;
 }
 
@@ -283,7 +287,7 @@ input:read-only {
             rgba(#fff, 0.5) 60%,
             rgba(#fff, 0)
         );
-        /* animation: shimmer 2s infinite; */
+        animation: shimmer 2s infinite;
         content: '';
     }
 

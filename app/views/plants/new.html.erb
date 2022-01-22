@@ -4,7 +4,7 @@
             <%= render 'form', plant: @plant %>
             <%= link_to 'Back', plants_path %>
     </div>
-    <div class="col-12 col-sm-3">
+    <div class="col-12 col-sm-4">
         <div id="name-preview" class="card">
             <%= image_tag 'placeholder-img.png', class:"card-img-top" %> 
             <div class="card-body">
@@ -47,9 +47,33 @@
         namePreview();
         // imageHandler();
     });
+    
+    $("#plant_genus_name").on('input change paste select', function() {
+        var genus = $(this).val();
+        $.ajax({
+            url:"/get_family",
+            method:"get",
+            dataType: "json",
+            data:{name : genus},
+            success :function(data){
+            if (data["data"] != null) {
+                console.log(data)
+                $('#plant_family_name').val(data["data"]["name"]);
+                $('#plant_family_name').prop('readonly', true);
+                showTextBoxValue('#family-name', '#plant_family_name');
+            }
+            else
+            {
+                $('#plant_family_name').val(null);
+                $('#plant_family_name').prop('readonly', false);
+                showTextBoxValue('#family-name', '#plant_family_name');
+            }
+            }
+        });
+    });
 
     function namePreview() {
-        $('.new-plant-namebox').on('input', function () {
+        $('.new-plant-namebox').on('input change paste select', function () {
             showTextBoxValue('#family-name', '#plant_family_name');
             showTextBoxValue('#genus-name', '#plant_genus_name');
             showTextBoxValue('#specific-epithet', '#plant_specific_epithet');
@@ -60,11 +84,12 @@
             showTextBoxValue('#cultivar', '#plant_cultivar', true);
         });
 
+
         $("input[type=radio][name='plant[symbol]']").on('change', function () {
-            console.log($("input[type=radio][name='plant[symbol]']:checked")[0].value)
-            if ($("input[type=radio][name='plant[symbol]']:checked")[0].value == 'hybrid') {
+            
+            if ($("input[type=radio][name='plant[symbol]']:checked").val() == 'hybrid') {
                 $('#genus-symbol').text('×');
-            } else if ($("input[type=radio][name='plant[symbol]']:checked")[0].value == 'graft') {
+            } else if ($("input[type=radio][name='plant[symbol]']:checked").val() == 'graft') {
                 $('#genus-symbol').text('+');
             } else {
                 $('#genus-symbol').text('');
@@ -72,8 +97,8 @@
         });
 
         $("input[type=radio][name='plant[hybrid]']").on('change', function () {
-            console.log($("input[type=radio][name='plant[hybrid]']:checked")[0].value)
-            if ($("input[type=radio][name='plant[hybrid]']:checked")[0].value == 'hybrid') {
+            console.log($("input[type=radio][name='plant[hybrid]']:checked").val())
+            if ($("input[type=radio][name='plant[hybrid]']:checked").val() == 'hybrid') {
                 $('#hybrid-symbol').text('×');
             } else {
                 $('#hybrid-symbol').text('');
@@ -96,15 +121,15 @@
 
     function showTextBoxValue(destination, source, quotes) {
         if (quotes) {
-            if ($(source)[0].value === '') {
+            if ($(source).val() === '') {
                 $(destination).text('');
 
             } else {
-                $(destination).text("\'"+$(source)[0].value+"\'");
+                $(destination).text("\'"+$(source).val()+"\'");
             };
         }
         else {
-            $(destination).text($(source)[0].value);
+            $(destination).text($(source).val());
             $(destination).parent().prev().css( "display", "none" );
         };
     }

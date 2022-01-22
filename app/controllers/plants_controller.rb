@@ -1,6 +1,8 @@
 class PlantsController < ApplicationController
   before_action :set_plant, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, only: %i[ new create edit update destroy ]
+  #autocomplete :genus, :name
+  before_action :force_json, only: :get_genus
 
   def home
   end
@@ -13,6 +15,11 @@ class PlantsController < ApplicationController
     else
       render json: { data: nil }
     end
+  end
+
+  def get_genus
+    q = params[:q].capitalize
+    @genera = Genus.where("name LIKE ? ", "%#{q}%").limit(5)
   end
 
   # GET /plants or /plants.json
@@ -42,7 +49,7 @@ class PlantsController < ApplicationController
     genus = Genus.find_or_initialize_by(name: params[:plant][:genus_name])
 
     if genus.new_record?
-      family = Family.create(name: params[:plant][:family_name])
+      family = Family.find_or_create_by(name: params[:plant][:family_name])
       @plant.genus_id = Genus.create(name: params[:plant][:genus_name], symbol: params[:plant][:symbol], family_id: family.id).id
     else
       @plant.genus_id = genus.id
@@ -86,6 +93,10 @@ class PlantsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_plant
       @plant = Plant.find(params[:id])
+    end
+
+    def force_json
+      request.format = :json
     end
 
     # Only allow a list of trusted parameters through.

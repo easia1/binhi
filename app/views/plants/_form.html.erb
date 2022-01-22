@@ -11,14 +11,10 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :genus_name %>
-    <%= form.text_field :genus_name, list: 'genera_autocomplete', class: "new-plant-namebox"  %>
-    <datalist id="genera_autocomplete" maxlength="4">
-      <% Genus.all.each do |genus| %>
-        <option value="<%= genus.name %>">
-      <% end %>
-    </datalist>
+    <br>
+    <%= form.text_field :genus_name, class:"form-control new-plant-namebox", data: { behavior: "autocomplete" }%>
   </div>
 
   <div class="field">
@@ -92,30 +88,6 @@
 <% end %>
 
 <script>
-  $(document).on('turbolinks:load', function() {
-    $("#plant_genus_name").on('input', function() {
-      var genus = $(this).val();
-      $.ajax({
-        url:"/get_family",
-        method:"get",
-        dataType: "json",
-        data:{name : genus},
-        success :function(data){
-          console.log(data)
-          if (data["data"] != null) {
-            $('#plant_family_name').val(data["data"]["name"]);
-            $('#plant_family_name').prop('readonly', true);
-            showTextBoxValue('#family-name', '#plant_family_name');
-          }
-          else
-          {
-            $('#plant_family_name').val('');
-            $('#plant_family_name').prop('readonly', false);
-            showTextBoxValue('#family-name', '#plant_family_name');
-          }
-        }
-      });
-    });
-  });
+
 
 </script> 
