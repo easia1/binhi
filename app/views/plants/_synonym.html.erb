@@ -1,0 +1,45 @@
+<div>
+
+  <div class="field">
+    <%= f.label :genus %>
+    <%= f.text_field :genus %>
+  </div>
+
+  <div class="field">
+    <%= f.label :specific_epithet %>
+    <%= f.text_field :specific_epithet %>
+  </div>
+
+  <div class="field">
+    <%= f.label :grex %>
+    <%= f.text_field :grex %>
+  </div>
+
+  <div class="field">
+    <%= f.label :infraspecies_unit %>
+    <%= f.text_field :infraspecies_unit %>
+  </div>
+
+  <div class="field">
+    <%= f.label :infraspecies_name %>
+    <%= f.text_field :infraspecies_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cultivar_group %>
+    <%= f.text_field :cultivar_group %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cultivar %>
+    <%= f.text_field :cultivar %>
+  </div>
+
+  <div class="field">
+    <%= f.label :hybrid %>
+    <%= f.text_field :hybrid %>
+  </div>
+
+  <%= f.hidden_field :_destroy %>
+  <%= link_to  'Delete', '#', class: 'remove_record' %>
+</div>
