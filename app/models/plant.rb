@@ -13,10 +13,8 @@ class Plant < ApplicationRecord
 
   accepts_nested_attributes_for :common_names, allow_destroy: true, reject_if: proc { |att| att['name'].blank? }
   accepts_nested_attributes_for :synonyms, allow_destroy: true, reject_if: proc { |att| att['genus'].blank? }
-
+  accepts_nested_attributes_for :images, allow_destroy: true, reject_if: proc { |att| att['file_path'].blank? }
   validates :common_names, :nested_attributes_uniqueness => {:field => :name}
-
-
 
   def genus_name=(name)
     self.genus = Genus.find_or_create_by(name: name)
