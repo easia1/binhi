@@ -152,7 +152,13 @@
       </div>
     </div>
 
-    
+  <%= form.fields_for(:images) do |i| %>
+    <div class="fields">
+      <%= i.text_field :caption %>
+      <%= i.text_field :source %>
+      <%= i.file_field :file_path %>
+    </div>
+  <% end %>
 
     <%#= form.select :light_reqt, [['Part Sun', 'Part Sun'],['Full Sun', 'Full Sun'], ['Part Shade', 'Part Shade'], ['Full Shade', 'Full Shade']], {}, :required => "true", :multiple => 'multiple', :class => 'form-control' %>
     <%#= form.select :light_reqt, [['Single', 'Single'],['Married', 'Married'], ['Widowed', 'Widowed'], ['Separated', 'Single']], {}, :required => "true", :multiple => 'multiple', :class => 'form-control' %>

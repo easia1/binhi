@@ -91,6 +91,12 @@
 <% end %>
 </p>
 
+<h5>Flower Colors</h5>
+<% @plant.images.each do |i| %>
+<p>
+  <%= image_tag i.file_path.to_s %>
+<% end %>
+</p>
 
 <%= link_to 'Edit', edit_plant_path(@plant) %> |
 <%= link_to 'Back', plants_path %>

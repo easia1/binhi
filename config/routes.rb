@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   end
   resources :families
   resources :genera
+  resources :images
   get "get_family", to: "plants#get_family", as: :get_family
   get "get_genus", to: "plants#get_genus", as: :get_genus
   
