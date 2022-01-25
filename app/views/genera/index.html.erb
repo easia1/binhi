@@ -1,0 +1,21 @@
+<h1>All Genera</h1>
+<%= paginate @genera %>
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Genus</th>
+    </thead>
+
+    <tbody>
+      <% @genera.each do |genus| %>
+        <tr>
+          <td><i><%= genus.name %></i></td>
+          <td><%= link_to 'Show', genus %></td>
+          <td><%= link_to 'Edit', edit_genus_path(genus) %></td>
+          <td><%= link_to 'Destroy', genus, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

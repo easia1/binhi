@@ -47,6 +47,12 @@ gem "select2-rails"
 gem 'jquery-ui-rails'
 gem 'rails-jquery-autocomplete'
 
+# For searching
+gem 'ransack'
+
+# For pagination
+gem 'kaminari'
+
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

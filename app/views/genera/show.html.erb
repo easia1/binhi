@@ -1,0 +1,22 @@
+<h1>All Genera under <i><%= @genus.name %></i></h1>
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Plants</th>
+    </thead>
+
+    <tbody>
+      <% @plants.each do |plant| %>
+        <tr>
+          <td><i><%= @genus.name %><%= plant.specific_epithet %></i></td>
+          <td><%= link_to 'Show', genus %></td>
+          <td><%= link_to 'Edit', edit_genus_path(genus) %></td>
+          <td><%= link_to 'Destroy', genus, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  
+</div>
