@@ -1,11 +1,10 @@
+<div class="row gx-5 mb-5">
 <h1>New Plant</h1>
-<div class="row">
-    <div class="col">
+    <div class="col-12 col-lg-8">
             <%= render 'form', plant: @plant %>
-            <%= link_to 'Back', plants_path %>
     </div>
-    <div class="col-12 col-sm-4">
-        <div id="name-preview" class="card">
+    <div class="col-12 col-lg-4 gy-3 gy-lg-0">
+        <div id="name-preview" class="card sticky-top shadow">
             <%= image_tag 'placeholder-img.png', class:"card-img-top" %> 
             <div class="card-body">
                 <h5 class="card-title">Preview</h5>
@@ -73,7 +72,7 @@
     });
 
     function namePreview() {
-        $('.new-plant-namebox').on('input change paste select', function () {
+        $('.new-plant-namebox,.easy-autocomplete').on('input change paste select', function () {
             showTextBoxValue('#family-name', '#plant_family_name');
             showTextBoxValue('#genus-name', '#plant_genus_name');
             showTextBoxValue('#specific-epithet', '#plant_specific_epithet');
@@ -85,20 +84,20 @@
         });
 
 
-        $("input[type=radio][name='plant[symbol]']").on('change', function () {
+        $("#plant_symbol").on('change', function () {
             
-            if ($("input[type=radio][name='plant[symbol]']:checked").val() == 'hybrid') {
+            if ($("#plant_symbol").val() == 'hybrid') {
                 $('#genus-symbol').text('×');
-            } else if ($("input[type=radio][name='plant[symbol]']:checked").val() == 'graft') {
+            } else if ($("#plant_symbol").val() == 'graft') {
                 $('#genus-symbol').text('+');
             } else {
                 $('#genus-symbol').text('');
             };
         });
 
-        $("input[type=radio][name='plant[hybrid]']").on('change', function () {
-            console.log($("input[type=radio][name='plant[hybrid]']:checked").val())
-            if ($("input[type=radio][name='plant[hybrid]']:checked").val() == 'hybrid') {
+        $("#plant_hybrid").on('change', function () {
+            console.log($("#plant_hybrid").val())
+            if ($("#plant_hybrid").val() == 'hybrid') {
                 $('#hybrid-symbol').text('×');
             } else {
                 $('#hybrid-symbol').text('');

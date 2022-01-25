@@ -15,18 +15,38 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+<% if false %>
   <body class="<%= home_class %> container-fluid">
     <div class="row">
       <%= render 'shared/sidebar' %>
-      <div class=" col-12 col-lg-10 p-5 body-container overflow-auto">
+      <div class="col-12 col-lg-10 pt-3 px-5 p-lg-5 body-container overflow-auto">
         <%= yield %>
       </div>
     </div>
-
-    
   </body>
+<% end %>
+  <body class="<%= home_class %>">
+    <!--header--->
+    <%= render 'shared/header' %>
+    <!--/header-->
+    <div class="container-fluid">
+      <div class="row">
+        <!-- nav --->
+          <%= render 'shared/sidebar' %>
+        <!--/nav-->
+          <main class="col-12 col-md-9 col-lg-10 main overflow-auto px-4 px-lg-5">
+            <%= yield %>
+          </main>
+      </div>
+    </div>
+
+
+
+  </body>
+    
 </html>
