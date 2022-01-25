@@ -3,7 +3,7 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-import "../states"
+import '../states';
 
 require('@rails/ujs').start();
 require('turbolinks').start();
@@ -11,7 +11,6 @@ require('@rails/activestorage').start();
 require('channels');
 
 require('easy-autocomplete');
-
 
 //= require popper
 //= require bootstrap-sprockets
@@ -65,37 +64,73 @@ document.addEventListener('turbolinks:load', () => {
         return new Popover(popoverTriggerEl);
     });
 
-    var dropdownElementList = [].slice.call(
+    /* var dropdownElementList = [].slice.call(
         document.querySelectorAll('.dropdown-toggle')
-    );
-    var dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
+    ); */
+    /* var dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
         return new bootstrap.Dropdown(dropdownToggleEl);
-    });
+    }); */
 });
 
+$(document).on('turbolinks:load', function () {
+    $('#nav-tog').on('click', function () {
+        var navContainer = document.getElementById('nav-options');
+        navContainer.classList.toggle('nav-options-closed');
+    });
 
-$(document).on('turbolinks:load', function() {
+    $('#infrasp_field_toggle').on('click', function () {
+        $('#plant_infraspecies_unit').prop('disabled', !this.checked);
+        $('#plant_infraspecies_name').prop('disabled', !this.checked);
+        if (!this.checked) {
+            $('#plant_infraspecies_unit').val('');
+            $('#plant_infraspecies_name').val('');
+        }
+    });
 
-  $('form').on('click', '.remove_record', function(event){
-    $(this).prev('input[type=hidden]').val('1');
-    $(this).closest('div').hide();
-    return event.preventDefault();
-  })
+    $('#cultivar_group_field_toggle').on('click', function () {
+        $('#plant_cultivar_group').prop('disabled', !this.checked);
+        if (!this.checked) {
+            $('#plant_cultivar_group').val('');
+        }
+    });
 
-  $('form').on('click', '.add_common_name_field', function(event) {
-    var regexp, time;
-    time = new Date().getTime();
-    regexp = new RegExp($(this).data('id'), 'g');
-    $('.common-name-container').append($(this).data('fields').replace(regexp, time));
-    return event.preventDefault();
-  })
+    $('#cultivar_field_toggle').on('click', function () {
+        $('#plant_cultivar').prop('disabled', !this.checked);
+        if (!this.checked) {
+            $('#plant_cultivar').val('');
+        }
+    });
 
-  $('form').on('click', '.add_synonym_field', function(event) {
-    var regexp, time;
-    time = new Date().getTime();
-    regexp = new RegExp($(this).data('id'), 'g');
-    $('.synonym-container').append($(this).data('fields').replace(regexp, time));
-    return event.preventDefault();
-  })
-})
+    $('#grex_field_toggle').on('click', function () {
+        $('#plant_grex').prop('disabled', !this.checked);
+        if (!this.checked) {
+            $('#plant_grex').val('');
+        }
+    });
 
+    $('form').on('click', '.remove_record', function (event) {
+        $(this).prev('input[type=hidden]').val('1');
+        $(this).closest('li').hide();
+        return event.preventDefault();
+    });
+
+    $('form').on('click', '.add_common_name_field', function (event) {
+        var regexp, time;
+        time = new Date().getTime();
+        regexp = new RegExp($(this).data('id'), 'g');
+        $('.common-name-container').append(
+            $(this).data('fields').replace(regexp, time)
+        );
+        return event.preventDefault();
+    });
+
+    $('form').on('click', '.add_synonym_field', function (event) {
+        var regexp, time;
+        time = new Date().getTime();
+        regexp = new RegExp($(this).data('id'), 'g');
+        $('.synonym-container').append(
+            $(this).data('fields').replace(regexp, time)
+        );
+        return event.preventDefault();
+    });
+});

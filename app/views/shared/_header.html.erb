@@ -1,0 +1,42 @@
+<header class="navbar sticky-top flex-md-nowrap p-0">
+    <% if false %>
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Company name</a>
+        <button
+            class="navbar-toggler position-absolute d-md-none collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#sidebarMenu"
+            aria-controls="sidebarMenu"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    <% end %>
+
+
+    <div class="col-12 col-md-3 col-lg-2 py-3 py-md-0 d-inline-flex">
+        <button
+            class="navbar-toggler d-md-none collapsed ms-1"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#sidebarMenu"
+            aria-controls="sidebarMenu"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+                <i class='bx bx-menu'></i>
+        </button>
+        <%= link_to root_path, class:'navbar-brand mx-2 mx-md-4 d-md-none' do %> <%= image_tag 'Logo-name.svg' %><% end %>
+    </div>
+    <% unless current_page?(root_path) %>
+        <input
+            class="form-control form-control-dark w-100"
+            type="text"
+            placeholder="Search"
+            aria-label="Search"
+        />
+        
+    <% end %>
+    
+</header>

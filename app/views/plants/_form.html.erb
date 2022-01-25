@@ -10,121 +10,155 @@
       </ul>
     </div>
   <% end %>
+  <div class="row gx-0 gy-3">
+    <div class="card ">
+      <h5 class="card-header">Scientific Name</h5>
+      <div class="card-body row g-3">
+        <div class="col-sm-3">
+          <%= form.label :symbol, 'Genus symbol', class:"form-label"  %> <br>
+          <%= form.select :symbol, [['None', nil], ['Intergeneric hybrid (×)', 'hybrid'], ['Graft (+)', 'graft']], {}, { class:"form-select new-plant-namebox" } %>
+        </div>
 
-  <div class="field form-group">
-    <%= form.label :genus_name %>
-    <br>
-    <%= form.text_field :genus_name, class:"form-control new-plant-namebox", data: { behavior: "autocomplete" }%>
-  </div>
+        <div class="col-sm-9">
+          <%= form.label :genus_name, 'Genus*', class:"form-label" %>
+          <br>
+          <%= form.text_field :genus_name, class:"form-control new-plant-namebox", data: { behavior: "autocomplete" }%>
+        </div>
 
-  <div class="field">
-    <%= form.label :symbol, 'Genus symbol' %> <br>
-    <%= form.radio_button :symbol, '' %> None <br>
-    <%= form.radio_button :symbol, 'hybrid' %> Hybrid <br>
-    <%= form.radio_button :symbol, 'graft' %> Graft <br>
-  </div>
+        <div class="col-12">
+          <%= form.label :family_name, 'Family*' %>
+          <%= form.text_field :family_name, class: "form-control new-plant-namebox" %>
+        </div>
 
-  <div class="field">
-    <%= form.label :family_name %>
-    <%= form.text_field :family_name, class: "new-plant-namebox" %>
-  </div>
+        <div class="col-sm-4">
+          <%= form.label :hybrid, 'Epithet symbol', class:"form-label"  %> <br>
+          <%= form.select :hybrid, [['None', nil], ['Interspecific hybrid (×)', 'hybrid']], {}, { class:"form-select new-plant-namebox" } %>
+        </div>
 
-  <div class="field">
-    <%= form.label :specific_epithet %>
-    <%= form.text_field :specific_epithet, class: "new-plant-namebox" %>
-  </div>
+        <div class="col-sm-8">
+          <%= form.label :specific_epithet, class:"form-label" %>
+          <%= form.text_field :specific_epithet, class: "form-control new-plant-namebox" %>
+          
+        </div>
 
-  <div class="field">
-    <%= form.label :hybrid, 'Specific epithet symbol' %> <br>
-    <%= form.radio_button :hybrid, '' %> None <br>
-    <%= form.radio_button :hybrid, 'hybrid' %> Hybrid <br>
-  </div>
+        <div class="col-12">
+          <input class="form-check-input" type="checkbox" value="checked" id="infrasp_field_toggle">
+          <label class="form-check-label" for="infrasp_field_toggle">
+            Infraspecies
+          </label>
+        </div>
 
-  <div class="field">
-    <%= form.label :grex %>
-    <%= form.text_field :grex, class: "new-plant-namebox" %>
-  </div>
+        <div class="col-sm-4">
+          <%= form.label :infraspecies_unit, 'Infraspecific unit', class:"form-label" %>
+          <%= form.text_field :infraspecies_unit, list: 'infraspecies_unit_autocomplete', class: "form-control new-plant-namebox infraspecies-fields", placeholder: "Select unit", disabled: true%>
+          <datalist id="infraspecies_unit_autocomplete" maxlength="4">
+              <option value="var.">
+              <option value="subsp.">
+              <option value="subvar.">
+              <option value="f.">
+              <option value="subf.">
+          </datalist>
+        </div>
 
-  <div class="field">
-    <%= form.label :infraspecies_unit %>
-    <%= form.text_field :infraspecies_unit, list: 'infraspecies_unit_autocomplete', class: "new-plant-namebox"  %>
-    <datalist id="infraspecies_unit_autocomplete" maxlength="4">
-        <option value="var.">
-        <option value="subsp.">
-        <option value="subvar.">
-        <option value="f.">
-        <option value="subf.">
-    </datalist>
-  </div>
+        <div class="col-sm-8">
+          <%= form.label :infraspecies_name, 'Infraspecific name', class:"form-label" %>
+          <%= form.text_field :infraspecies_name, class: "form-control new-plant-namebox infraspecies-fields", disabled: true %>
+        </div>
 
-  <div class="field">
-    <%= form.label :infraspecies_name %>
-    <%= form.text_field :infraspecies_name, class: "new-plant-namebox" %>
-  </div>
+        <div class="col-sm-4">
+          <input class="form-check-input" type="checkbox" value="checked" id="grex_field_toggle">
+          <%= form.label :grex, class:"form-label" %>
+          <%= form.text_field :grex, class: "form-control new-plant-namebox", disabled: true  %>
+        </div>
 
-  <div class="field">
-    <%= form.label :cultivar_group %>
-    <%= form.text_field :cultivar_group, class: "new-plant-namebox" %>
-  </div>
+        <div class="col-sm-4">
+          <input class="form-check-input" type="checkbox" value="checked" id="cultivar_group_field_toggle">
+          <%= form.label :cultivar_group, class:"form-label"  %>
+          <%= form.text_field :cultivar_group, class: "form-control new-plant-namebox", disabled: true  %>
+        </div>
 
-  <div class="field">
-    <%= form.label :cultivar %>
-    <%= form.text_field :cultivar, class: "new-plant-namebox" %>
-  </div>
+        <div class="col-sm-4">
+          <input class="form-check-input" type="checkbox" value="checked" id="cultivar_field_toggle">
+          <%= form.label :cultivar, class:"form-label"  %>
+          <%= form.text_field :cultivar, class: "form-control new-plant-namebox", disabled: true  %>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card ">
+      <h5 class="card-header">Synonyms </h5>
+      <ul class='fields synonym-container list-group list-group-flush'>
+        <%= form.fields_for :synonyms do |builder| %>
+          <%= render 'synonym', f: builder %>
+        <% end %>
+      </ul>
+      <div class="card-footer d-grid gap-2">
+        <%= link_to_add_synonym('Add Synonym', form, :synonyms, class: 'btn btn-outline-success') %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :water_reqts %>
-    <%= form.text_field :water_reqts %>
-  </div>
+    <div class="card">
+      <h5 class="card-header">Common Names</h5>
+      <ul class='fields common-name-container list-group list-group-flush'>
+        <%= form.fields_for :common_names do |builder| %>
+          <%= render 'common_name', f: builder %>
+        <% end %>
+      </ul> 
+      <div class="card-footer d-grid gap-2">
+        <%= link_to_add_row('Add Common Name', form, :common_names, class: 'btn btn-outline-success') %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :landscape_uses %>
-    <%= form.text_area :landscape_uses %>
-  </div>
+    <div class="card">
+      <h5 class="card-header">Plant information</h5>
+      <div class="card-body row g-3">
 
+        <div class="field">
+          <%= form.label :distribution, 'Native distribution', class:"form-label" %>
+          <%= form.text_field :distribution, class:"form-control" %>
+        </div>
 
-  <strong>Synonyms</strong>
-  
-  <div class='fields synonym-container'>
-    <%= form.fields_for :synonyms do |builder| %>
-      <%= render 'synonym', f: builder %>
-    <% end %>
-  </div> 
-  <%= link_to_add_synonym('Add Synonym', form, :synonyms, class: 'btn btn-primary') %>
-
-  <div>
-    <strong>Common Names</strong>
-  </div>
-
-  <div class='fields common-name-container'>
-    <%= form.fields_for :common_names do |builder| %>
-      <%= render 'common_name', f: builder %>
-    <% end %>
-  </div> 
-  <%= link_to_add_row('Add Common Name', form, :common_names, class: 'btn btn-primary') %>
-  
-  <div class='fields'>
-    <%= form.label :light_reqt %>
-    <%= form.select :light_reqt, [['Part Sun', 'Part Sun'],['Full Sun', 'Full Sun'], ['Part Shade', 'Part Shade'], ['Full Shade', 'Full Shade']], {}, :multiple => 'multiple', :class => 'form-control' %>
-  </div>
+        <div class='fields'>
+          <%= form.label :light_reqt, 'Light requirements', class:"form-label" %>
+          <%= form.select :light_reqt, [['Part Sun', 'Part Sun'],['Full Sun', 'Full Sun'], ['Part Shade', 'Part Shade'], ['Full Shade', 'Full Shade']], {}, :multiple => 'multiple', :class => 'form-control' %>
+        </div>
+        
+        <div class="field">
+          <%= form.label :water_reqts, 'Water requirements', class:"form-label" %>
+          <%= form.select :water_reqts, [['--', nil], ['High', 'high'], ['Medium', 'medium'], ['Low', 'low']], {}, { class:"form-select new-plant-namebox" } %>
+        </div>
 
 
-  <div class='fields'>
-    <%= form.label :foliage_color %>
-    <%= form.select :foliage_color, [], {}, :multiple => 'multiple', :class => 'form-control' %>
-  </div>
-  
+        
+        <div class='fields'>
+          <%= form.label :flower_color, class:"form-label" %>
+          <%= form.select :flower_color, [['Red', 'red'], ['Orange', 'orange'], ['Yellow', 'yellow'], ['Blue', 'blue'], ['Purple', 'purple'], ['Pink', 'pink'], ['White', 'white']], {}, :multiple => 'multiple', :class => 'form-control' %>
+        </div>
 
-  <div class='fields'>
-    <%= form.label :flower_color %>
-    <%= form.select :flower_color, [], {}, :multiple => 'multiple', :class => 'form-control' %>
-  </div>
-  
+        <div class='fields'>
+          <%= form.label :foliage_color, class:"form-label" %>
+          <%= form.select :foliage_color, [['Red', 'red'], ['Orange', 'orange'], ['Yellow', 'yellow'], ['Purple', 'purple'], ['Pink', 'pink']], {}, :multiple => 'multiple', :class => 'form-control' %>
+        </div>
+        
+        <div class="field">
+          <%= form.label :landscape_uses, class:"form-label" %>
+          <%= form.text_area :landscape_uses, class:"form-control" %>
+        </div>
 
-  <%#= form.select :light_reqt, [['Part Sun', 'Part Sun'],['Full Sun', 'Full Sun'], ['Part Shade', 'Part Shade'], ['Full Shade', 'Full Shade']], {}, :required => "true", :multiple => 'multiple', :class => 'form-control' %>
-  <%#= form.select :light_reqt, [['Single', 'Single'],['Married', 'Married'], ['Widowed', 'Widowed'], ['Separated', 'Single']], {}, :required => "true", :multiple => 'multiple', :class => 'form-control' %>
-  
-  <div class="actions">
-    <%= form.submit %>
+        <div class="field">
+          <%= form.label :source, 'References', class:"form-label" %>
+          <%= form.text_area :source, class:"form-control" %>
+        </div>
+      </div>
+    </div>
+
+    
+
+    <%#= form.select :light_reqt, [['Part Sun', 'Part Sun'],['Full Sun', 'Full Sun'], ['Part Shade', 'Part Shade'], ['Full Shade', 'Full Shade']], {}, :required => "true", :multiple => 'multiple', :class => 'form-control' %>
+    <%#= form.select :light_reqt, [['Single', 'Single'],['Married', 'Married'], ['Widowed', 'Widowed'], ['Separated', 'Single']], {}, :required => "true", :multiple => 'multiple', :class => 'form-control' %>
+    
+    <div class="actions d-grid gap-2">
+      <%= form.submit 'Add Plant Record', class:"btn btn-success" %>      
+    </div>
   </div>
 <% end %>
