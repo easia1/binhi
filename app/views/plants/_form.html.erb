@@ -11,11 +11,34 @@
     </div>
   <% end %>
   <div class="row gx-0 gy-3">
+    
+    <%= form.fields_for(:images) do |i| %>
+      <div class="card ">
+        <h5 class="card-header">Plant Image</h5>
+        <div class="card-body row g-3">
+          <div class="col-12">
+            <%= i.label :file_path, 'Image file', class:"form-label" %>
+            <%= i.file_field :file_path, class:"form-control new-plant-namebox" %>
+          </div>
+          <div class="col-sm-6">
+            <%= i.label :caption, 'Image caption', class:"form-label" %>
+            <%= i.text_field :caption, class:"form-control new-plant-namebox" %>
+          </div>
+          <div class="col-sm-6">
+            <%= i.label :source, 'Image source', class:"form-label" %>
+            <%= i.text_field :source, class:"form-control new-plant-namebox" %>
+          </div>
+        </div>
+      </div>
+  <% end %>
+
+
+
     <div class="card ">
       <h5 class="card-header">Scientific Name</h5>
       <div class="card-body row g-3">
         <div class="col-sm-3">
-          <%= form.label :symbol, 'Genus symbol', class:"form-label"  %> <br>
+          <%= form.label :symbol, 'Genus symbol', class:"form-label"  %>
           <%= form.select :symbol, [['None', nil], ['Intergeneric hybrid (×)', 'hybrid'], ['Graft (+)', 'graft']], {}, { class:"form-select new-plant-namebox" } %>
         </div>
 
@@ -152,19 +175,13 @@
       </div>
     </div>
 
-  <%= form.fields_for(:images) do |i| %>
-    <div class="fields">
-      <%= i.text_field :caption %>
-      <%= i.text_field :source %>
-      <%= i.file_field :file_path %>
-    </div>
-  <% end %>
+  
 
     <%#= form.select :light_reqt, [['Part Sun', 'Part Sun'],['Full Sun', 'Full Sun'], ['Part Shade', 'Part Shade'], ['Full Shade', 'Full Shade']], {}, :required => "true", :multiple => 'multiple', :class => 'form-control' %>
     <%#= form.select :light_reqt, [['Single', 'Single'],['Married', 'Married'], ['Widowed', 'Widowed'], ['Separated', 'Single']], {}, :required => "true", :multiple => 'multiple', :class => 'form-control' %>
     
     <div class="actions d-grid gap-2">
-      <%= form.submit 'Add Plant Record', class:"btn btn-success" %>      
+      <%= form.submit class:"btn btn-success" %>      
     </div>
   </div>
 <% end %>

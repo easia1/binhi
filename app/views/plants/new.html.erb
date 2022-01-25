@@ -5,7 +5,7 @@
     </div>
     <div class="col-12 col-lg-4 gy-3 gy-lg-0">
         <div id="name-preview" class="card sticky-top shadow">
-            <%= image_tag 'placeholder-img.png', class:"card-img-top" %> 
+            <%= image_tag 'placeholder-img.png', class:"card-img-top", id:"plant-preview-img" %> 
             <div class="card-body">
                 <h5 class="card-title">Preview</h5>
                 <div class="preview__body">
@@ -27,8 +27,8 @@
                             <span id="grex"></span>
                             <span id="infrasp-unit"></span>
                             <span id="infrasp-name"></span>
-                            <span id="cultivar-group"></span>
                             <span id="cultivar"></span>
+                            <span id="cultivar-group"></span>
                         </h4>
                     </div>
                 
@@ -44,7 +44,6 @@
 <script>
     $(document).on('turbolinks:load', function () {
         namePreview();
-        // imageHandler();
     });
     
     $("#plant_genus_name").on('input change paste select', function() {
@@ -79,8 +78,8 @@
             showTextBoxValue('#grex', '#plant_grex');
             showTextBoxValue('#infrasp-unit', '#plant_infraspecies_unit');
             showTextBoxValue('#infrasp-name', '#plant_infraspecies_name');
-            showTextBoxValue('#cultivar-group', '#plant_cultivar_group');
-            showTextBoxValue('#cultivar', '#plant_cultivar', true);
+            showTextBoxValue('#cultivar-group', '#plant_cultivar_group', 'group');
+            showTextBoxValue('#cultivar', '#plant_cultivar', 'quotes');
         });
 
 
@@ -105,26 +104,19 @@
         });
     
     }
-    // function imageHandler() {
-    //     $('#post_image_url').on('keyup', function (event) {
-    //         if (event.keyCode == 86) {
-    //             // user pasted an image url, generate image preview
-    //         }
-    //         if (event.keyCode == 8) {
-    //             if ($('#post_image_url').val() == '') {
-    //                 // user cleared an image url, generate image preview
-    //             }
-    //         }
-    //     });
-    // }
 
-    function showTextBoxValue(destination, source, quotes) {
-        if (quotes) {
+    function showTextBoxValue(destination, source, type) {
+        if (type && type === 'quotes') {
             if ($(source).val() === '') {
                 $(destination).text('');
-
             } else {
                 $(destination).text("\'"+$(source).val()+"\'");
+            };
+        } else if (type && type === 'group') {
+            if ($(source).val() === '') {
+                $(destination).text('');
+            } else {
+                $(destination).text($(source).val()+" Gp");
             };
         }
         else {
