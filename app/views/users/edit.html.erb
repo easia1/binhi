@@ -1,0 +1,26 @@
+<h3>Edit User</h3>
+<%= @user.inspect %>
+
+<%= form_with model: @user do |f| %>
+<p>
+    <%= f.label :name %><br/>
+    <%= f.text_field :name, class: "form-control" %>
+</p>
+
+<p>
+    <%= f.label :username %><br/>
+    <%= f.text_field :username, class: "form-control"%>
+</p>
+
+<p>
+    <%= f.label :occupation %><br />
+    <%= f.select :occupation,  options_for_select(occupation_options), { prompt: 'Choose an occupation' } %>
+</p>
+<br><br>
+<p>
+    <%= f.submit "Edit User",  class: "btn btn-success add-user"%>
+</p>
+
+<% end %>
+
+
