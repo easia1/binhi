@@ -304,6 +304,13 @@ html body {
     left: 0;
     z-index: 100; /* Behind the navbar */
     padding: 10rem 0 0; /* Height of navbar */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.sidebar::-webkit-scrollbar {
+    display: none;
 }
 
 .home-nav {
@@ -326,6 +333,7 @@ html body {
     color: white;
     font-size: 1.1rem;
     font-weight: 300;
+    
 }
 
 .btn-toggle,
@@ -575,4 +583,10 @@ html body {
     .navbar {
         min-height: 4rem;
     }
+}
+
+/* ---------------------------- Profile --------------------------- */
+.profile-image {
+    width: 200px;
+    height: 200px;
 }
