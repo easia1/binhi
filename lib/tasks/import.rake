@@ -13,9 +13,11 @@ namespace :import do
 
       imported_family = Family.find_or_create_by(name: family)
       Genus.find_or_create_by(name: genus, symbol: hybrid, family_id: imported_family.id)
+      print '.'
     end
-  end
 
+    puts 'Imported Data'
+  end
 end
 
 # To run, type: bundle exec rails import:data

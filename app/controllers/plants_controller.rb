@@ -6,6 +6,11 @@ class PlantsController < ApplicationController
 
   def home
   end
+  
+  def search
+    @plants = @q.result.page params[:page]
+  end
+
 
   def get_family
     puts params
@@ -24,7 +29,7 @@ class PlantsController < ApplicationController
 
   # GET /plants or /plants.json
   def index
-    @plants = Plant.all
+    @plants = Plant.all.page params[:page]
     @families = Family.all.order("name ASC")
   end
 
@@ -122,9 +127,12 @@ class PlantsController < ApplicationController
       request.format = :json
     end
 
+    def search_params
+      params.require(:q).permit!
+    end
+
     # Only allow a list of trusted parameters through.
     def plant_params
-
       params.require(:plant).permit(:genus_name, 
         :specific_epithet, 
         :grex, :infraspecies_unit, 

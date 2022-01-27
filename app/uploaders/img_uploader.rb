@@ -11,4 +11,9 @@ class ImgUploader < CarrierWave::Uploader::Base
             img.auto_orient! 
         end 
     end 
+
+    # Restrict uploads to images only
+    def extension_white_list
+        %w(jpg jpeg gif png)
+    end
 end

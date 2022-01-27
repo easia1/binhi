@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :users, except: [:index]
   get "get_family", to: "plants#get_family", as: :get_family
   get "get_genus", to: "plants#get_genus", as: :get_genus
-  
+  get 'search', to: 'plants#search'
   devise_for :users, :path => '', :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" }
 
   root 'plants#home'

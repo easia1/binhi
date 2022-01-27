@@ -2,7 +2,7 @@ import $ from 'jquery';
 import 'select2/dist/css/select2.css';
 import 'select2';
 
-window.addEventListener('DOMContentLoaded', () => {
+$(document).on('turbolinks:load', () => {
     $('#plant_light_reqt, #plant_foliage_color, #plant_flower_color').select2({
         tags: true,
         width: '100%',

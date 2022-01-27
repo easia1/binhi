@@ -228,6 +228,16 @@ html body {
     background: $light-green;
 }
 
+.section-title {
+    font-size: 1.5rem;
+    color: $dark-green;
+    border-radius: 100px;
+    align-self: flex-start;
+    padding: 0.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
 /* -------------------------------------------------------------------------- */
 /*                                   NAVBAR                                   */
 /* -------------------------------------------------------------------------- */
@@ -242,6 +252,14 @@ html body {
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
     font-size: 1rem;
+}
+#beta-label {
+    display: inline-block;
+    text-decoration: none;
+    color: WHITE;
+    font-size: xx-small;
+    margin-left: 0.5rem;
+    align-self: flex-end;
 }
 
 .navbar-brand img {

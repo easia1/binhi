@@ -60,7 +60,7 @@
 
 
 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar overflow-scroll collapse <%= nav_class %>">
-    <%= link_to root_path, class:'navbar-brand mx-2 mb-5 d-none d-md-block' do %> <%= image_tag 'Logo-name.svg' %><% end %>
+    <%= link_to root_path, class:'navbar-brand mx-2 mb-5 d-none d-md-block' do %> <%= image_tag 'Logo-name.svg' %><span id='beta-label'>BETA</span><% end %>
     <ul class="list-unstyled ps-0 mt-2 nav-options nav-options-closed mb-auto" id="nav-options">
             <li class="nav-item">
                 <%= link_to root_path, class: "navigation-link rounded #{active_class(root_path)}" do %>Home<% end %>
