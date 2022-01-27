@@ -16,6 +16,12 @@ class Plant < ApplicationRecord
   accepts_nested_attributes_for :images, allow_destroy: true, reject_if: proc { |att| att['file_path'].blank? }
   validates :common_names, :nested_attributes_uniqueness => {:field => :name}
 
+  # ransack_alias :species, :specific_epithet_or_grex_or_infraspecies_name_or_cultivar_group_or_cultivar
+  # ransack_alias :common, :common_names_name
+  # ransack_alias :syn, :synonyms_genus_or_synonyms_specific_epithet_or_synonyms_grex_or_synonyms_infraspecies_name_or_synonyms_cultivar_group_or_synonyms_cultivar
+  # ransack_alias :genus, :genus_name
+
+
   def genus_name=(name)
     self.genus = Genus.find_or_create_by(name: name)
   end
@@ -56,7 +62,5 @@ class Plant < ApplicationRecord
   def cultivar=(s)
     write_attribute(:cultivar, s.to_s.titleize) # The to_s is in case you get nil/non-string
   end
-
-
 
 end

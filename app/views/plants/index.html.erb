@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
-
-<h1>All Plants</h1>
+<%= paginate @plants %>
+<h1 class="section-title">All Plants</h1>
+<% if false %>
 <div class="table-responsive">
   <table class="table table-hover">
     <thead>
@@ -44,34 +45,47 @@
     </tbody>
   </table>
 </div>
+  
+<% end %>
+
+
+<div class="row gy-3 gy-lg-0">
+        <div id="name-preview" class="card sticky-top shadow">
+            <%= image_tag 'placeholder-img.png', class:"card-img-top", id:"plant-preview-img" %> 
+            <div class="card-body">
+                <h5 class="card-title">Preview</h5>
+                <div class="preview__body">
+                        <p class="plant-preview_family">
+                            <span class="skeleton-box" id="family-name-skelbox" style="width:55%;"></span>
+                        </p>
+                        <p class="plant-preview_family">
+                            <span id="family-name"></span>
+                        </p>
+                        <h4>
+                            
+                            <span class="skeleton-box" style="width:80%;"></span>
+                            <span class="skeleton-box" style="width:90%;"></span>
+                        </h4>
+                        <h4>
+                            <span id="genus-symbol"></span><span id="genus-name"></span>
+                            <span id="hybrid-symbol"></span>
+                            <span id="specific-epithet"></span>
+                            <span id="grex"></span>
+                            <span id="infrasp-unit"></span>
+                            <span id="infrasp-name"></span>
+                            <span id="cultivar"></span>
+                            <span id="cultivar-group"></span>
+                        </h4>
+                    </div>
+                
+                
+            </div>
+        </div>
+    </div>
+
+
 
 <br>
-<% if false %>
-  <h1>families</h1>
-  <table>
-    <thead>
-      <tr>
-        <th>Family</th>
-        <th>Genera</th>
-      </tr>
-    </thead>
-      
 
-    <tbody>
-      <% @families.each do |family| %>
-        <tr>
-        <td><%= family.name %></td>
-        <td>
-          <% Genus.where(id: family.genus_ids).each do |genus| %>
-            <%= genus.name %>
-          <% end %>
-        </td>
-        </tr>
-        
-      <% end %>
-    </tbody>
-  </table>
-
-<% end %>
 
 <%= link_to 'New Plant', new_plant_path %>

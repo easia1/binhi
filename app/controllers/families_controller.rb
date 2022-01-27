@@ -4,7 +4,7 @@ class FamiliesController < ApplicationController
 
     # GET /plants or /plants.json
     def index
-        @families = Family.all.order("name ASC")
+        @families = Family.all.order("name ASC").page params[:page]
     end
 
     # GET /plants/1 or /plants/1.json
