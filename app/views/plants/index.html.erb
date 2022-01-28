@@ -37,7 +37,7 @@
                           <span id="cultivar"><%= plant.cultivar? ? "\'#{plant.cultivar}\'" : "" %></span>
                           <span id="cultivar-group"><%= plant.cultivar_group? ? "#{plant.cultivar} Gp" : "" %></span>
                       </h4>
-                      <p><%= plant.common_names ? plant.common_names.first.name : "" %></p>
+                      <p><%= plant.common_names.first ? plant.common_names.first.name : "" %></p>
                   </div>
               </div>
           </div>

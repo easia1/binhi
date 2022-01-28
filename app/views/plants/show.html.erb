@@ -3,7 +3,7 @@
             27.66deg,
             rgba(0, 0, 0, 0.7) 56.94%,
             rgba(0, 0, 0, 0) 90.87%
-        ), url(<%= @plant.images.first.file_path.to_s %>)">
+        ), url(<%= @plant.images.first ? @plant.images.first.file_path.to_s : asset_path("placeholder-img.png") %>)">
     <div class="container-fluid pt-5 d-flex align-items-start justify-content-end flex-column" >
               <span id="family-name" class="badge rounded-pill bg-success"><%= @plant.family.name %></span>
           <h1 class="text-light">
@@ -26,7 +26,7 @@
               <span id="cultivar"><%= @plant.cultivar? ? "\'#{plant.cultivar}\'" : "" %></span>
               <span id="cultivar-group"><%= @plant.cultivar_group? ? "#{@plant.cultivar} Gp" : "" %></span>
           </h1>
-          <p class="text-light"><%= @plant.common_names ? @plant.common_names.first.name : "" %></p>
+          <p class="text-light"><%= @plant.common_names.first ? @plant.common_names.first.name : "" %></p>
 
     </div>
 
