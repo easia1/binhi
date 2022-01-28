@@ -25,7 +25,8 @@ Things you may want to cover:
 
 # Binhi 🌱
 
-Binhi is an online database of native plants in the Philippines.\_\_  
+Binhi is an online database of native plants in the Philippines.
+
 _Ang Binhi ay isang online na talaan ng mga katutubong halaman sa Pilipinas._
 
 Live demo [_here_](https://www.example.com).
