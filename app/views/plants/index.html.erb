@@ -1,91 +1,47 @@
-<p id="notice"><%= notice %></p>
-<%= paginate @plants %>
-<h1 class="section-title">All Plants</h1>
-<% if false %>
-<div class="table-responsive">
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Family</th>
-        <th>Genus</th>
-        <th>Specific epithet</th>
-        <th>Hybrid</th>
-        <th>Grex</th>
-        <th>Infraspecies unit</th>
-        <th>Infraspecies name</th>
-        <th>Cultivar group</th>
-        <th>Cultivar</th>
-        <th>Hybrid</th>
-        <th>Water reqts</th>
-        <th>Landscape uses</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @plants.each do |plant| %>
-        <tr>
-          <td><%= plant.family.name %></td>
-          <td><i><%= get_genus(plant.genus_id).name %></i></td>
-          <td><i><%= plant.specific_epithet %></i></td>
-          <td><%= plant.hybrid %></td>
-          <td><%= plant.grex %></td>
-          <td><%= plant.infraspecies_unit %></td>
-          <td><%= plant.infraspecies_name %></td>
-          <td><%= plant.cultivar_group %></td>
-          <td><%= plant.cultivar %></td>
-          <td><%= plant.hybrid %></td>
-          <td><%= plant.water_reqts %></td>
-          <td><%= plant.landscape_uses %></td>
-          <td><%= link_to 'Show', plant %></td>
-          <td><%= link_to 'Edit', edit_plant_path(plant) %></td>
-          <td><%= link_to 'Destroy', plant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
-  
-<% end %>
 
 
-<div class="row gy-3 gy-lg-0">
-        <div id="name-preview" class="card sticky-top shadow">
-            <%= image_tag 'placeholder-img.png', class:"card-img-top", id:"plant-preview-img" %> 
-            <div class="card-body">
-                <h5 class="card-title">Preview</h5>
-                <div class="preview__body">
-                        <p class="plant-preview_family">
-                            <span class="skeleton-box" id="family-name-skelbox" style="width:55%;"></span>
-                        </p>
-                        <p class="plant-preview_family">
-                            <span id="family-name"></span>
-                        </p>
-                        <h4>
-                            
-                            <span class="skeleton-box" style="width:80%;"></span>
-                            <span class="skeleton-box" style="width:90%;"></span>
-                        </h4>
-                        <h4>
-                            <span id="genus-symbol"></span><span id="genus-name"></span>
-                            <span id="hybrid-symbol"></span>
-                            <span id="specific-epithet"></span>
-                            <span id="grex"></span>
-                            <span id="infrasp-unit"></span>
-                            <span id="infrasp-name"></span>
-                            <span id="cultivar"></span>
-                            <span id="cultivar-group"></span>
-                        </h4>
-                    </div>
-                
-                
-            </div>
-        </div>
-    </div>
-
-
-
-<br>
-
-
-<%= link_to 'New Plant', new_plant_path %>
+  <%= paginate @plants %>
+  <h1 class="section-title">All Plants</h1>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+    <% @plants.each do |plant| %>
+      <div class="col">
+        <%= link_to plant, class:"text-decoration-none text-dark" do %>
+          <div id="name-preview" class="card h-100 plant-card">
+              <% if plant.images.first %>
+                <%= image_tag plant.images.first.file_path.to_s, class:"card-img-top", id:"plant-preview-img" %> 
+              <% else %>
+                <%= image_tag 'placeholder-img.png', class:"card-img-top", id:"plant-preview-img" %> 
+              <% end %>
+              <div class="card-body">
+                  <div class="preview__body">
+                      <span class="plant-preview_family">
+                          <span id="family-name"><%= plant.family.name %></span>
+                      </span>
+                      <h4>
+                          <span id="genus-symbol">
+                            <% if plant.genus.symbol == "hybrid" %>
+                              ×
+                            <% elsif plant.genus.symbol == 'graft' %>
+                              +
+                            <% end %>
+                          </span><span id="genus-name"><%= plant.genus.name %></span>
+                          <span id="hybrid-symbol">
+                            <% if plant.hybrid == "hybrid" %>
+                              ×
+                            <% end %>
+                          </span>
+                          <span id="specific-epithet"><%= plant.specific_epithet %></span>
+                          <span id="grex"><%= plant.grex %></span>
+                          <span id="infrasp-unit"><%= plant.infraspecies_unit %></span>
+                          <span id="infrasp-name"><%= plant.infraspecies_name %></span>
+                          <span id="cultivar"><%= plant.cultivar? ? "\'#{plant.cultivar}\'" : "" %></span>
+                          <span id="cultivar-group"><%= plant.cultivar_group? ? "#{plant.cultivar} Gp" : "" %></span>
+                      </h4>
+                      <p><%= plant.common_names ? plant.common_names.first.name : "" %></p>
+                  </div>
+              </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>

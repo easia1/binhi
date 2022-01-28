@@ -8,7 +8,7 @@ class PlantsController < ApplicationController
   end
   
   def search
-    @plants = @q.result.page params[:page]
+    @plants = @q.result(distinct: true).page params[:page]
   end
 
 

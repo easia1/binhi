@@ -20,7 +20,7 @@
 //@import 'bootstrap';
 
 $dark-green: rgba(6, 70, 53, 1);
-$green: rgba(81, 146, 89, 1);
+$green: rgb(81, 146, 89);
 $light-green: rgb(208, 223, 210);
 $orange: rgba(240, 187, 98, 1);
 $yellow: rgba(244, 238, 169, 1);
@@ -333,7 +333,6 @@ html body {
     color: white;
     font-size: 1.1rem;
     font-weight: 300;
-    
 }
 
 .btn-toggle,
@@ -544,6 +543,47 @@ html body {
 }
 
 /* -------------------------------------------------------------------------- */
+/*                                    USER                                    */
+/* -------------------------------------------------------------------------- */
+
+/* ---------------------------- Profile --------------------------- */
+.profile-image {
+    width: 200px;
+    height: 200px;
+    img {
+        object-fit: cover;
+    }
+}
+
+.profile-pic img {
+    object-fit: cover;
+    width: 200px;
+    height: 200px;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                   PLANTS                                   */
+/* -------------------------------------------------------------------------- */
+
+.plant-card {
+    transition: 0.3s transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
+        0.3s box-shadow,
+        0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
+    cursor: pointer;
+}
+
+.plant-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+}
+
+.jumbotron-image {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* -------------------------------------------------------------------------- */
 /*                                MEDIA QUERIES                               */
 /* -------------------------------------------------------------------------- */
 
@@ -583,10 +623,4 @@ html body {
     .navbar {
         min-height: 4rem;
     }
-}
-
-/* ---------------------------- Profile --------------------------- */
-.profile-image {
-    width: 200px;
-    height: 200px;
 }

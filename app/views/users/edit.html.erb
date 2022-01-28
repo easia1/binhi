@@ -1,4 +1,4 @@
-<h1>Editing Profile</h1>
+<h1 class="section-title">Edit Profile</h1>
 
 <%= form_with model: @user do |f| %>
   <div class="card">
@@ -16,10 +16,10 @@
 
       <div class="field">
         <%= f.label :occupation, class:"form-label"  %><br />
-        <%= f.select :occupation,  options_for_select(occupation_options), { prompt: 'Choose an occupation' }, { class:"form-select new-plant-namebox" }  %>
+        <%= f.select :occupation,  options_for_select(occupation_options, selected: @user.occupation), { prompt: 'Choose an occupation' }, { class:"form-select new-plant-namebox" }  %>
       </div>
       <div class="field">
-        <%= f.label :profile_image, 'Image file', class:"form-label" %>
+        <%= f.label :profile_image, 'Profile picture', class:"form-label" %>
         <%= f.file_field :profile_image, class:"form-control new-plant-namebox" %>
       </div>
     </div>
@@ -30,5 +30,3 @@
   </div>
 <% end %>
 
-
-<%= @user.inspect %>

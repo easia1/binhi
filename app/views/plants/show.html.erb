@@ -1,102 +1,139 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="pt-5 mb-4 bg-dark rounded-3 jumbotron-image" style="background-image: linear-gradient(
+            27.66deg,
+            rgba(0, 0, 0, 0.7) 56.94%,
+            rgba(0, 0, 0, 0) 90.87%
+        ), url(<%= @plant.images.first.file_path.to_s %>)">
+    <div class="container-fluid pt-5 d-flex align-items-start justify-content-end flex-column" >
+              <span id="family-name" class="badge rounded-pill bg-success"><%= @plant.family.name %></span>
+          <h1 class="text-light">
+              <span id="genus-symbol">
+                <% if @plant.genus.symbol == "hybrid" %>
+                  ×
+                <% elsif @plant.genus.symbol == 'graft' %>
+                  +
+                <% end %>
+              </span><span id="genus-name"><%= @plant.genus.name %></span>
+              <span id="hybrid-symbol">
+                <% if @plant.hybrid == "hybrid" %>
+                  ×
+                <% end %>
+              </span>
+              <span id="specific-epithet"><%= @plant.specific_epithet %></span>
+              <span id="grex"><%= @plant.grex %></span>
+              <span id="infrasp-unit"><%= @plant.infraspecies_unit %></span>
+              <span id="infrasp-name"><%= @plant.infraspecies_name %></span>
+              <span id="cultivar"><%= @plant.cultivar? ? "\'#{plant.cultivar}\'" : "" %></span>
+              <span id="cultivar-group"><%= @plant.cultivar_group? ? "#{@plant.cultivar} Gp" : "" %></span>
+          </h1>
+          <p class="text-light"><%= @plant.common_names ? @plant.common_names.first.name : "" %></p>
 
-<p>
-  <strong>Specific epithet:</strong>
-  <%= @plant.specific_epithet %>
-</p>
+    </div>
 
-<p>
-  <strong>Grex:</strong>
-  <%= @plant.grex %>
-</p>
 
-<p>
-  <strong>Infraspecies unit:</strong>
-  <%= @plant.infraspecies_unit %>
-</p>
 
-<p>
-  <strong>Infraspecies name:</strong>
-  <%= @plant.infraspecies_name %>
-</p>
+  </div>
 
-<p>
-  <strong>Cultivar group:</strong>
-  <%= @plant.cultivar_group %>
-</p>
 
-<p>
-  <strong>Cultivar:</strong>
-  <%= @plant.cultivar %>
-</p>
 
-<p>
-  <strong>Hybrid:</strong>
-  <%= @plant.hybrid %>
-</p>
+  <p>
+    <strong>Specific epithet:</strong>
+    <%= @plant.specific_epithet %>
+  </p>
 
-<p>
-  <strong>Water reqts:</strong>
-  <%= @plant.water_reqts %>
-</p>
+  <p>
+    <strong>Grex:</strong>
+    <%= @plant.grex %>
+  </p>
 
-<p>
-  <strong>Landscape uses:</strong>
-  <%= @plant.landscape_uses %>
-</p>
+  <p>
+    <strong>Infraspecies unit:</strong>
+    <%= @plant.infraspecies_unit %>
+  </p>
 
-<p>
-  <strong>Genus:</strong>
-  <%= @plant.genus_id %>
-</p>
+  <p>
+    <strong>Infraspecies name:</strong>
+    <%= @plant.infraspecies_name %>
+  </p>
 
-<h5>Common Names</h5>
-<% @plant.common_names.each do |common_name| %>
-<p>
-  <%= common_name.name %>
-<% end %>
-</p>
+  <p>
+    <strong>Cultivar group:</strong>
+    <%= @plant.cultivar_group %>
+  </p>
 
-<h5>Synonyms</h5>
-<% @plant.synonyms.each do |synonym| %>
-<p>
-  <%= synonym.genus %>
-  <%= synonym.specific_epithet %>
-  <%= synonym.grex %>
-  <%= synonym.infraspecies_unit %>
-  <%= synonym.infraspecies_name %>
-  <%= synonym.cultivar_group %>
-  <%= synonym.cultivar %>
-  <%= synonym.hybrid %>
-<% end %>
-</p>
+  <p>
+    <strong>Cultivar:</strong>
+    <%= @plant.cultivar %>
+  </p>
 
-<h5>Light Requirements</h5>
-<% @plant.light_reqts.each do |lr| %>
-<p>
-  <%= lr.light_reqt %>
-<% end %>
-</p>
+  <p>
+    <strong>Hybrid:</strong>
+    <%= @plant.hybrid %>
+  </p>
 
-<h5>Foliage Colors</h5>
-<% @plant.foliage_colors.each do |fc| %>
-<p>
-  <%= fc.color %>
-<% end %>
+  <p>
+    <strong>Water reqts:</strong>
+    <%= @plant.water_reqts %>
+  </p>
 
-<h5>Flower Colors</h5>
-<% @plant.flower_colors.each do |fc| %>
-<p>
-  <%= fc.color %>
-<% end %>
-</p>
+  <p>
+    <strong>Landscape uses:</strong>
+    <%= @plant.landscape_uses %>
+  </p>
 
-<h5>Flower Colors</h5>
-<% @plant.images.each do |i| %>
-<p>
-  <%= image_tag i.file_path.to_s %>
-<% end %>
-</p>
+  <p>
+    <strong>Genus:</strong>
+    <%= @plant.genus_id %>
+  </p>
 
-<%= link_to 'Edit', edit_plant_path(@plant) %> |
-<%= link_to 'Back', plants_path %>
+  <h5>Common Names</h5>
+  <% @plant.common_names.each do |common_name| %>
+  <p>
+    <%= common_name.name %>
+  <% end %>
+  </p>
+
+  <h5>Synonyms</h5>
+  <% @plant.synonyms.each do |synonym| %>
+  <p>
+    <%= synonym.genus %>
+    <%= synonym.specific_epithet %>
+    <%= synonym.grex %>
+    <%= synonym.infraspecies_unit %>
+    <%= synonym.infraspecies_name %>
+    <%= synonym.cultivar_group %>
+    <%= synonym.cultivar %>
+    <%= synonym.hybrid %>
+  <% end %>
+  </p>
+
+  <h5>Light Requirements</h5>
+  <% @plant.light_reqts.each do |lr| %>
+  <p>
+    <%= lr.light_reqt %>
+  <% end %>
+  </p>
+
+  <h5>Foliage Colors</h5>
+  <% @plant.foliage_colors.each do |fc| %>
+  <p>
+    <%= fc.color %>
+  <% end %>
+
+  <h5>Flower Colors</h5>
+  <% @plant.flower_colors.each do |fc| %>
+  <p>
+    <%= fc.color %>
+  <% end %>
+  </p>
+
+  <h5>Flower Colors</h5>
+  <% @plant.images.each do |i| %>
+  <p>
+    <%= image_tag i.file_path.to_s %>
+  <% end %>
+  </p>
+
+  <%= link_to 'Edit', edit_plant_path(@plant) %> |
+  <%= link_to 'Back', plants_path %>
+</div>
