@@ -226,8 +226,13 @@ $yellow: rgba(244, 238, 169, 1);
 //     }
 // }
 
+html {
+    font-size: 16px;
+}
+
 html body {
     background: $light-green;
+    height: 100%;
 }
 
 .section-title {

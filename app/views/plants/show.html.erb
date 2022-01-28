@@ -4,7 +4,7 @@
             rgba(0, 0, 0, 0.7) 56.94%,
             rgba(0, 0, 0, 0) 90.87%
         ), url(<%= @plant.images.first ? @plant.images.first.file_path.to_s : asset_path("placeholder-img.png") %>)">
-    <div class="container-fluid pt-5 d-flex align-items-start justify-content-end flex-column" >
+    <div class="container-fluid pt-5 px-2 d-flex align-items-start justify-content-end flex-column" >
               <span id="family-name" class="badge rounded-pill bg-success"><%= @plant.family.name %></span>
           <h1 class="text-light">
               <span id="genus-symbol">
