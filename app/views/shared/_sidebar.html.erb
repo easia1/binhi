@@ -76,6 +76,6 @@
             </div>
         <% else %>
             <%= link_to new_user_session_path, class: "navigation-link rounded mt-2 #{active_class(new_user_session_path)}" do %>Sign in<% end %>
-            <%= link_to new_user_registration_path, class: "navigation-link rounded  mt-2#{active_class(new_user_registration_path)}" do %>Sign up<% end %>
+            <%= link_to new_user_registration_path, class: "navigation-link rounded mt-2 #{active_class(new_user_registration_path)}" do %>Sign up<% end %>
         <% end %>
 </nav>
