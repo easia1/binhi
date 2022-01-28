@@ -37,8 +37,7 @@ import 'bootstrap';
 // Import the specific modules you may need (Modal, Alert, etc)
 import { Tooltip, Popover, Dropdown } from 'bootstrap';
 
-// The stylesheet location we created earlier
-require('../stylesheets/application.scss');
+/* require('../stylesheets/application.scss'); */
 
 // If you're using Turbolinks. Otherwise simply use: jQuery(function () {
 

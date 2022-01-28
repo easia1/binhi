@@ -14,8 +14,8 @@
         <%= link_to root_path, class:'navbar-brand mx-2 mx-md-4 d-md-none' do %> <%= image_tag 'Logo-name.svg' %><span id='beta-label'>BETA</span><% end %>
     </div>
     <% unless current_page?(root_path) %>
-        <%= search_form_for(@q, url: search_path, method: :get, html: {class: "w-100"}) do |f| %>
-                <%= f.search_field :specific_epithet_or_grex_or_infraspecies_name_or_cultivar_group_or_cultivar_or_common_names_name_or_synonyms_genus_or_synonyms_specific_epithet_or_synonyms_grex_or_synonyms_infraspecies_name_or_synonyms_cultivar_group_or_synonyms_cultivar_or_genus_name_cont_any, class:"form-control form-control-dark w-100", placeholder:"Search | Maghanap" %>
+        <%= form_tag search_path, method: :get, class: "w-100" do %>
+                <%= text_field_tag :q, params[:q], class:"form-control form-control-dark w-100", placeholder:"Search | Maghanap" %>
         <% end %>
     <% end %>
     

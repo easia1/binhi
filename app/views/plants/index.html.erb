@@ -4,44 +4,6 @@
   <h1 class="section-title">All Plants</h1>
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
     <% @plants.each do |plant| %>
-      <div class="col">
-        <%= link_to plant, class:"text-decoration-none text-dark" do %>
-          <div id="name-preview" class="card h-100 plant-card">
-              <% if plant.images.first %>
-                <%= image_tag plant.images.first.file_path.to_s, class:"card-img-top", id:"plant-preview-img" %> 
-              <% else %>
-                <%= image_tag 'placeholder-img.png', class:"card-img-top", id:"plant-preview-img" %> 
-              <% end %>
-              <div class="card-body">
-                  <div class="preview__body">
-                      <span class="plant-preview_family">
-                          <span id="family-name"><%= plant.family.name %></span>
-                      </span>
-                      <h4>
-                          <span id="genus-symbol">
-                            <% if plant.genus.symbol == "hybrid" %>
-                              ×
-                            <% elsif plant.genus.symbol == 'graft' %>
-                              +
-                            <% end %>
-                          </span><span id="genus-name"><%= plant.genus.name %></span>
-                          <span id="hybrid-symbol">
-                            <% if plant.hybrid == "hybrid" %>
-                              ×
-                            <% end %>
-                          </span>
-                          <span id="specific-epithet"><%= plant.specific_epithet %></span>
-                          <span id="grex"><%= plant.grex %></span>
-                          <span id="infrasp-unit"><%= plant.infraspecies_unit %></span>
-                          <span id="infrasp-name"><%= plant.infraspecies_name %></span>
-                          <span id="cultivar"><%= plant.cultivar? ? "\'#{plant.cultivar}\'" : "" %></span>
-                          <span id="cultivar-group"><%= plant.cultivar_group? ? "#{plant.cultivar} Gp" : "" %></span>
-                      </h4>
-                      <p><%= plant.common_names.first ? plant.common_names.first.name : "" %></p>
-                  </div>
-              </div>
-          </div>
-        <% end %>
-      </div>
+      <%= render :partial => 'shared/plantcard', :locals => {:plant => plant}%>
     <% end %>
   </div>

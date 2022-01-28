@@ -14,6 +14,8 @@
  *= require select2-bootstrap
  */
 
+$primary: #064635;
+
 @import 'bootstrap/scss/bootstrap.scss';
 @import 'easy-autocomplete/dist/easy-autocomplete';
 @import 'select2/dist/css/select2';
@@ -246,6 +248,58 @@ html body {
 }
 
 /* -------------------------------------------------------------------------- */
+/*                                LOGIN/SIGNUP                                */
+/* -------------------------------------------------------------------------- */
+
+.form-signin,
+.form-signup {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
+
+.form-signin .checkbox {
+    font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+    z-index: 2;
+}
+
+.form-signin input[type='text'] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-signin input[type='password'] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.form-signup input[type='email'] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-signup input[type='text'],
+.form-signup select,
+.form-signup input[type='password'] {
+    margin-bottom: -1px;
+    border-radius: 0;
+}
+
+#user_password_confirmation {
+    margin-bottom: 10px;
+    border-radius: 0.25rem;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+/* -------------------------------------------------------------------------- */
 /*                                   NAVBAR                                   */
 /* -------------------------------------------------------------------------- */
 
@@ -272,6 +326,10 @@ html body {
 .navbar-brand img {
     max-height: 2rem;
     min-height: 2rem;
+}
+
+.navbar-brand img svg {
+    height: 100%;
 }
 
 /* ------------------------------ Navbar toggle ----------------------------- */
@@ -466,6 +524,11 @@ html body {
     padding: 1rem;
 }
 
+.source-card {
+    border: none;
+    background-color: rgba(81, 146, 89, 0.2);
+}
+
 /* -------------------------------------------------------------------------- */
 /*                                  NEW PLANT                                 */
 /* -------------------------------------------------------------------------- */
@@ -477,6 +540,18 @@ html body {
 
 .easy-autocomplete input {
     width: 100%;
+    box-shadow: none;
+    color: #212529;
+    border: 1px solid #ced4da;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.easy-autocomplete input:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: #83a39a;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(6, 70, 53, 0.25);
 }
 
 /* ---------------------------- New plant preview --------------------------- */
@@ -547,6 +622,34 @@ html body {
 
 .select2-selection--multiple {
     height: 40px;
+    border: none;
+}
+
+.select2-selection {
+    border: none;
+}
+
+.select2-container--default .select2-selection--multiple {
+    color: #212529;
+    border: 1px solid #ced4da;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.select2-container--default.select2-container--focus
+    .select2-selection--multiple {
+    border: 1px solid #83a39a !important;
+    color: #212529;
+    background-color: #fff;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(6, 70, 53, 0.25);
+}
+
+body
+    .select2-container--default
+    .select2-results__option--highlighted[aria-selected] {
+    background: $green;
+    color: #fff;
+    border: none;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -555,9 +658,15 @@ html body {
 
 /* ---------------------------- Profile --------------------------- */
 .profile-image {
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    display: flex;
+    align-content: stretch;
+    align-items: stretch;
     img {
+        width: 100%;
+        object-position: bottom;
         object-fit: cover;
     }
 }
@@ -577,6 +686,12 @@ html body {
         0.3s box-shadow,
         0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
     cursor: pointer;
+}
+
+.plant-card .card-img-top {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .plant-card:hover {

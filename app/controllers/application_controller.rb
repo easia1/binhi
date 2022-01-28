@@ -5,7 +5,10 @@ class ApplicationController < ActionController::Base
 	before_action :set_search
 
 	def set_search
-		@q = Plant.ransack(params[:q])
+		q = params[:q]
+		@plants_search = Plant.ransack(specific_epithet_or_grex_or_infraspecies_name_or_cultivar_group_or_cultivar_or_common_names_name_or_synonyms_genus_or_synonyms_specific_epithet_or_synonyms_grex_or_synonyms_infraspecies_name_or_synonyms_cultivar_group_or_synonyms_cultivar_or_genus_name_cont_any: q)
+		@families_search = Family.ransack(name_cont: q)
+		@genera_search = Genus.ransack(name_cont: q)
 	end
 
 	protected

@@ -9,7 +9,7 @@ class FamiliesController < ApplicationController
 
     # GET /plants/1 or /plants/1.json
     def show
-        @genera = @family.genera
+        @genera = @family.genera.page params[:page]
     end
 
     # GET /plants/new

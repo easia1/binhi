@@ -10,7 +10,7 @@ class GeneraController < ApplicationController
 
     # GET /plants/1 or /plants/1.json
     def show
-        @plants = @genus.plants
+        @plants = @genus.plants.page params[:page]
     end
 
     # GET /plants/new

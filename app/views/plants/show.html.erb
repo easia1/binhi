@@ -1,11 +1,19 @@
-<div class="row">
-  <div class="pt-5 mb-4 bg-dark rounded-3 jumbotron-image" style="background-image: linear-gradient(
+
+<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+  <ol class="breadcrumb align-items-baseline">
+    <li class="breadcrumb-item"><%= link_to root_path, class:"btn btn-outline-primary" do %><i class='bx bxs-home' ></i><% end %></li>
+    <li class="breadcrumb-item"><%= link_to  @plant.family.name, family_path(@plant.family)%></li>
+    <li class="breadcrumb-item"><%= link_to  @plant.genus.name, genus_path(@plant.genus)%></li>
+    <li class="breadcrumb-item" aria-current="page"><%= @plant.id %></li>
+  </ol>
+</nav>
+  <div class="pt-5 mb-4 bg-dark rounded-3 jumbotron-image h-50" style="background-image: linear-gradient(
             27.66deg,
             rgba(0, 0, 0, 0.7) 56.94%,
             rgba(0, 0, 0, 0) 90.87%
         ), url(<%= @plant.images.first ? @plant.images.first.file_path.to_s : asset_path("placeholder-img.png") %>)">
-    <div class="container-fluid pt-5 px-2 d-flex align-items-start justify-content-end flex-column" >
-              <span id="family-name" class="badge rounded-pill bg-success"><%= @plant.family.name %></span>
+    <div class="container-fluid h-100 pt-5 pb-2 px-4 d-flex align-items-start justify-content-end flex-column" >
+              <%= link_to family_path(@plant.family) do %><span id="family-name" class="badge rounded-pill bg-success"><%= @plant.family.name %></span><% end %>
           <h1 class="text-light">
               <span id="genus-symbol">
                 <% if @plant.genus.symbol == "hybrid" %>
@@ -29,10 +37,155 @@
           <p class="text-light"><%= @plant.common_names.first ? @plant.common_names.first.name : "" %></p>
 
     </div>
-
-
-
   </div>
+
+
+<ul class="list-group">
+  <% if @plant.synonyms.first %>
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+      <div class="ms-2 me-auto">
+        <div class="fw-bold">Synonyms</div>
+        <% @plant.synonyms.each do |synonym| %>
+          <span>
+            <span id="genus-symbol">
+              <% if synonym.hybrid == "intergeneric" %>
+                ×
+              <% elsif synonym.hybrid == 'graft' %>
+                +
+              <% end %>
+            </span><span id="genus-name"><%= @plant.genus.name %></span>
+            <span id="hybrid-symbol">
+              <% if synonym.hybrid == "interspecific" %>
+                ×
+              <% end %>
+            </span>
+            <span id="specific-epithet"><%= synonym.specific_epithet %></span>
+            <span id="grex"><%= synonym.grex %></span>
+            <span id="infrasp-unit"><%= synonym.infraspecies_unit %></span>
+            <span id="infrasp-name"><%= synonym.infraspecies_name %></span>
+            <span id="cultivar"><%= synonym.cultivar? ? "\'#{synonym.cultivar}\'" : "" %></span>
+            <span id="cultivar-group"><%= synonym.cultivar_group? ? "#{synonym.cultivar} Gp" : "" %></span>
+          </span><br>
+        <% end %>
+      </div>
+    </li>
+  <% end %>
+  <% if @plant.common_names.first %>
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">Common Name</div>
+          <% @plant.common_names.each do |name| %>
+            <span><%= name.name %></span><br>
+          <% end %>
+        </div>
+    </li>
+  <% end %>
+  <% if @plant.light_reqts.first %>
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">Light Requirements</div>
+          <% @plant.light_reqts.each do |reqt| %>
+            <span><%= reqt.light_reqt %></span><br>
+          <% end %>
+        </div>
+    </li>
+  <% end %>
+  <% if @plant.water_reqts? %>
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">Water Requirement</div>
+            <span><%= @plant.water_reqts %></span><br>
+        </div>
+    </li>
+  <% end %>
+  <% if @plant.distribution? %>
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">Native Distribution</div>
+            <span><%= @plant.distribution %></span><br>
+        </div>
+    </li>
+  <% end %>
+  <% if @plant.foliage_colors.first %>
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">Foliage Color</div>
+          <% @plant.foliage_colors.each do |color| %>
+            <span><%= color.color %></span><br>
+          <% end %>
+        </div>
+    </li>
+  <% end %>
+  <% if @plant.flower_colors.first %>
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">Flower Color</div>
+          <% @plant.flower_colors.each do |color| %>
+            <span><%= color.color %></span><br>
+          <% end %>
+        </div>
+    </li>
+  <% end %>
+  <% if @plant.landscape_uses? %>
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">Landscape Uses</div>
+            <span><%= @plant.landscape_uses %></span><br>
+        </div>
+    </li>
+  <% end %>
+  <% if @plant.additional_info? %>
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">Additional Information</div>
+            <span><%= @plant.additional_info %></span><br>
+        </div>
+    </li>
+  <% end %>
+  <% if @plant.source? %>
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">References</div>
+            <span><%= @plant.source %></span><br>
+        </div>
+    </li>
+  <% end %>
+</ul>
+
+<% if @plant.images.first %>
+  <ul class="list-group mt-4">
+    <% if @plant.images.first.caption? %>
+      <li class="list-group-item d-flex justify-content-between align-items-start">
+          <div class="ms-2 me-auto">
+            <div class="fw-bold">Image Caption</div>
+              <span><%= @plant.images.first.caption %></span><br>
+          </div>
+      </li>
+    <% end %>
+    <% if @plant.images.first.source? %>
+      <li class="list-group-item d-flex justify-content-between align-items-start">
+          <div class="ms-2 me-auto">
+            <div class="fw-bold">Image Source</div>
+              <span><%= @plant.images.first.source %></span><br>
+          </div>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<% if current_user %>
+<div class="mt-4">
+  <%= link_to 'Edit Plant', edit_plant_path(@plant), class:"btn btn-primary" %>
+  <%= link_to 'Delete Plant', plant_path(@plant), method: :delete, data: 
+    {confirm: "Are you sure?"}, class:"btn btn-outline-primary" %>
+</div>
+<% end %>
+
+
+<% if false
+ %>
+  
 
 
 
@@ -93,6 +246,9 @@
   <% end %>
   </p>
 
+  <h5>Distribution</h5>
+  <p><%= @plant.distribution %></p>
+
   <h5>Synonyms</h5>
   <% @plant.synonyms.each do |synonym| %>
   <p>
@@ -131,9 +287,12 @@
   <% @plant.images.each do |i| %>
   <p>
     <%= image_tag i.file_path.to_s %>
+    <p><%= i.caption %></p>
+    <p><%= i.source %></p>
   <% end %>
   </p>
 
-  <%= link_to 'Edit', edit_plant_path(@plant) %> |
+   |
   <%= link_to 'Back', plants_path %>
-</div>
+<% end %>
+

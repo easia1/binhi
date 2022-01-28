@@ -31,3 +31,11 @@
 
 en:
   hello: "Hello world"
+
+en:
+  views:
+    pagination:
+      next: "<i class='bx bx-chevron-right' ></i>"
+      previous: "<i class='bx bx-chevron-left' ></i>"
+      first: "<i class='bx bx-chevrons-left'></i>"
+      last: "<i class='bx bx-chevrons-right'></i>"

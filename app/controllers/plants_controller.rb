@@ -8,7 +8,11 @@ class PlantsController < ApplicationController
   end
   
   def search
-    @plants = @q.result(distinct: true).page params[:page]
+    #@plants = @q.result(distinct: true).page params[:page]
+
+    @plants = @plants_search.result(distinct: true).page params[:page]
+		@families = @families_search.result(distinct: true).limit(4)
+		@genera = @genera_search.result(distinct: true).limit(4)
   end
 
 
@@ -142,6 +146,9 @@ class PlantsController < ApplicationController
         :hybrid, 
         :water_reqts, 
         :landscape_uses, 
+        :distribution,
+        :source,
+        :additional_info,
         genus_attributes: [:symbol, :family_name], 
         common_names_attributes: CommonName.attribute_names.map(&:to_sym).push(:_destroy), 
         synonyms_attributes: Synonym.attribute_names.map(&:to_sym).push(:_destroy), 
