@@ -25,7 +25,7 @@ Things you may want to cover:
 
 # Binhi 🌱
 
-Binhi is an online database of native plants in the Philippines.
+Binhi is an online database of native plants in the Philippines.\_\_  
 _Ang Binhi ay isang online na talaan ng mga katutubong halaman sa Pilipinas._
 
 Live demo [_here_](https://www.example.com).
@@ -34,15 +34,27 @@ Live demo [_here_](https://www.example.com).
 
 ## Table of Contents
 
--   [General Info](#general-information)
+-   [Goal](#goal)
+-   [Features](#features)
 -   [Getting Started](#getting-started)
 -   [Tests](#running-the-tests)
 -   [Project Status](#project-status)
 
-## General Information
+## Goal
 
--   What is the goal you want to achieve by building this product?
-    -   To increase awareness about native plants and to make the information readily available to the public.
+-   To increase awareness about native plants and to make the information readily available to the public.
+
+## Features
+
+-   All users
+    -   Can search for plants
+    -   Can view plant entries
+    -   Can browse the database by family, genus
+-   Registered users
+    -   Can create new plant entries
+    -   Can view their contributions
+    -   Can edit existing entries
+    -   Can delete their entries
 
 ## Getting Started
 
@@ -57,12 +69,6 @@ These instructions will get you a copy of the project up and running on your loc
 -   NodeJS 12.22.1
 -   Yarn 1.22.17
 -   PostgreSQL 14.0
-
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
 
 ### Setup
 
@@ -80,10 +86,23 @@ rails db:setup
 rails db:migrate
 ```
 
-3. Start the Rails server
+3. Import family and genus data
+
+```shell
+bundle exec rails import:data
+```
+
+4. Start the Rails server
 
 ```shell
 rails s
+```
+
+5. Login using the following credentials (optional)
+
+```shell
+Username: user
+Password: test123
 ```
 
 ## Running the tests
