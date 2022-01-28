@@ -58,12 +58,6 @@ These instructions will get you a copy of the project up and running on your loc
 -   Yarn 1.22.17
 -   PostgreSQL 14.0
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
-
 ### Setup
 
 1. Install the gems, check dependencies
