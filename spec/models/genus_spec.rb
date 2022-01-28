@@ -1,5 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Genus, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'should include the "name" attribute' do
+    expect(subject.attributes).to include("name") 
+  end
+  
+  it 'should include the "symbol" attribute' do
+    expect(subject.attributes).to include("symbol") 
+  end
 end
