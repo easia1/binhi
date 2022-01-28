@@ -53,6 +53,9 @@ gem 'ransack'
 # For pagination
 gem 'kaminari'
 
+# For validating file uploads
+gem 'file_validators'
+
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

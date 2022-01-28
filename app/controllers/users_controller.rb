@@ -17,7 +17,10 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+	if @user.profile_image?
 		@user.profile_image.file.delete
+	end
+	
     if @user.update(user_params)
       redirect_to user_path(@user)
     else
