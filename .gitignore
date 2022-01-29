@@ -38,6 +38,3 @@ yarn-debug.log*
 
 /config/database.yml
 .env
-
-/db/migrate/20220114134949_create_join_table_native_distribution_plant.rb
-/db/migrate/20220117104707_drop_native_distributions.rb
