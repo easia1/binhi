@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe CommonName, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'should include the "name" attribute' do
+    expect(subject.attributes).to include("name") 
+  end
+
 end

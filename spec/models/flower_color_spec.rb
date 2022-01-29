@@ -1,5 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe FlowerColor, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'should include the "color" attribute' do
+    expect(subject.attributes).to include("color") 
+  end
 end
