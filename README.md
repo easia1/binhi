@@ -29,9 +29,7 @@ Binhi is an online database of native plants in the Philippines.
 
 _Ang Binhi ay isang online na talaan ng mga katutubong halaman sa Pilipinas._
 
-Live demo [_here_](https://www.example.com).
-
-> (To be deployed)
+Live demo [_here_](https://binhi.herokuapp.com).
 
 ## Table of Contents
 
