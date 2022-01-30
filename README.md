@@ -107,38 +107,15 @@ Password: test123
 ## Running the tests
 
 ```shell
-rspec
+rspec spec -f d
 ```
+
+<!-- ### 
+
 
 ## Project Status
 
 Project is: _in progress_.
-
-<!-- ### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
--   [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
--   [Maven](https://maven.apache.org/) - Dependency Management
--   [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
 
 ## Contributing
 
