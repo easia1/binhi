@@ -115,8 +115,21 @@ rspec spec -f d
 ### Home Page (Desktop View)
 <img width="1680" alt="Screen Shot 2022-02-04 at 7 42 50 AM" src="https://user-images.githubusercontent.com/85211112/152447773-003b0969-13aa-4500-b2fb-9a8d1419b2b7.png">
 
-## Home page (Mobile View)
-<img width="497" alt="Screen Shot 2022-02-04 at 7 44 09 AM" src="https://user-images.githubusercontent.com/85211112/152447882-df7accdc-886a-4c8c-b065-d06631a9494a.png">
+### All Plants
+<img width="1680" alt="Screen Shot 2022-02-04 at 7 48 44 AM" src="https://user-images.githubusercontent.com/85211112/152448314-de99725e-d802-4338-920d-f6817c6abc9e.png">
+
+### Plant Record
+<img width="1680" alt="Screen Shot 2022-02-04 at 7 49 27 AM" src="https://user-images.githubusercontent.com/85211112/152448381-992eaa23-5b4c-4fba-bc3a-e58cc558f34f.png">
+<img width="1680" alt="Screen Shot 2022-02-04 at 7 49 50 AM" src="https://user-images.githubusercontent.com/85211112/152448415-6b9cb566-4a44-4b25-afa7-7815784557bf.png">
+
+### New Plant Record
+<img width="1680" alt="Screen Shot 2022-02-04 at 7 50 16 AM" src="https://user-images.githubusercontent.com/85211112/152448456-57740bd8-646a-4858-b585-1bf211e6bd29.png">
+
+Autocomplete
+<img width="1680" alt="Screen Shot 2022-02-04 at 7 50 56 AM" src="https://user-images.githubusercontent.com/85211112/152448518-c5736593-bf8d-45a8-8841-330f22d26f79.png">
+
+Autofill family name based on genus
+<img width="1680" alt="Screen Shot 2022-02-04 at 7 51 19 AM" src="https://user-images.githubusercontent.com/85211112/152448553-5e18598a-f8cb-4908-8a29-ccc8babf62c5.png">
 
 
 
