@@ -37,7 +37,7 @@ Live demo [_here_](https://binhi.herokuapp.com).
 -   [Features](#features)
 -   [Getting Started](#getting-started)
 -   [Tests](#running-the-tests)
--   [Project Status](#project-status)
+-   [Screenshots](#screenshots)
 
 ## Goal
 
@@ -110,7 +110,18 @@ Password: test123
 rspec spec -f d
 ```
 
+## Screenshots
+
+### Home Page (Desktop View)
+<img width="1680" alt="Screen Shot 2022-02-04 at 7 42 50 AM" src="https://user-images.githubusercontent.com/85211112/152447773-003b0969-13aa-4500-b2fb-9a8d1419b2b7.png">
+
+## Home page (Mobile View)
+<img width="497" alt="Screen Shot 2022-02-04 at 7 44 09 AM" src="https://user-images.githubusercontent.com/85211112/152447882-df7accdc-886a-4c8c-b065-d06631a9494a.png">
+
+
+
 <!-- ### 
+
 
 
 ## Project Status
