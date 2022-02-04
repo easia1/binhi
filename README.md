@@ -38,6 +38,7 @@ Live demo [_here_](https://binhi.herokuapp.com).
 -   [Getting Started](#getting-started)
 -   [Tests](#running-the-tests)
 -   [Screenshots](#screenshots)
+-   [Authors](#authors)
 
 ## Goal
 
@@ -112,7 +113,7 @@ rspec spec -f d
 
 ## Screenshots
 
-### Home Page (Desktop View)
+### Home Page
 <img width="1680" alt="Screen Shot 2022-02-04 at 7 42 50 AM" src="https://user-images.githubusercontent.com/85211112/152447773-003b0969-13aa-4500-b2fb-9a8d1419b2b7.png">
 
 ### All Plants
@@ -128,10 +129,29 @@ rspec spec -f d
 Autocomplete
 <img width="1680" alt="Screen Shot 2022-02-04 at 7 50 56 AM" src="https://user-images.githubusercontent.com/85211112/152448518-c5736593-bf8d-45a8-8841-330f22d26f79.png">
 
-Autofill family name based on genus
+Autofill family name based on genus, and live preview of scientific name on the right
 <img width="1680" alt="Screen Shot 2022-02-04 at 7 51 19 AM" src="https://user-images.githubusercontent.com/85211112/152448553-5e18598a-f8cb-4908-8a29-ccc8babf62c5.png">
 
+### Browse by Family
+<img width="1680" alt="Screen Shot 2022-02-04 at 7 53 42 AM" src="https://user-images.githubusercontent.com/85211112/152448779-d060a662-cd6c-4f2e-bf63-8ffc5f16a7f2.png">
 
+### Genera within a Family
+<img width="1680" alt="Screen Shot 2022-02-04 at 7 54 22 AM" src="https://user-images.githubusercontent.com/85211112/152448838-c7b97c65-7c9f-4576-8225-0aae74cd4ed2.png">
+
+### Browse by Genus
+<img width="1680" alt="Screen Shot 2022-02-04 at 7 55 18 AM" src="https://user-images.githubusercontent.com/85211112/152448915-e6c6fcc2-67a7-4dd2-b1b6-ba797967bd08.png">
+
+### Plants within a Genus
+<img width="1680" alt="Screen Shot 2022-02-04 at 7 55 54 AM" src="https://user-images.githubusercontent.com/85211112/152448963-e8b0f60a-4358-4c3c-9171-3ba8a610ff16.png">
+
+### Search Results
+<img width="1680" alt="Screen Shot 2022-02-04 at 7 57 42 AM" src="https://user-images.githubusercontent.com/85211112/152449144-f2289636-1d35-433c-b3ba-2b49bd9b53b2.png">
+
+
+## Authors
+
+-   **John Carreos** - [Github](https://github.com/JohnCarreos)
+-   **Edric Emmanuel Sia - [Github](https://github.com/easia1)
 
 <!-- ### 
 
@@ -149,9 +169,6 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
 
-## Authors
-
--   **Billie Thompson** - _Initial work_ - [PurpleBooth](https://github.com/PurpleBooth)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
