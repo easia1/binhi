@@ -151,7 +151,7 @@ Autofill family name based on genus, and live preview of scientific name on the 
 ## Authors
 
 -   **John Carreos** - [Github](https://github.com/JohnCarreos)
--   **Edric Emmanuel Sia - [Github](https://github.com/easia1)
+-   **Edric Emmanuel Sia** - [Github](https://github.com/easia1)
 
 <!-- ### 
 
